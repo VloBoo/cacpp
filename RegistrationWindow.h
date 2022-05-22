@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "Registration.h"
 #include "MainWindow.h"
 namespace CACPP {
 
@@ -255,6 +255,7 @@ namespace CACPP {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->tabControl1);
+			this->Cursor = System::Windows::Forms::Cursors::Default;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
 			this->Name = L"RegistrationWindow";
@@ -270,47 +271,95 @@ namespace CACPP {
 #pragma endregion
 
 	public: void show(bool logout) {
-		if (logout) {
-			this->Show();
-		}
-		else
-		{
-			this->Close();
-		}
-
+		logout ? this->Show() : this->Close();
 	}
-		  // private:  cli::array<Users^>^ lu;
 
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		//cli::array<wchar_t>^ arrChar= this->textBox1->Text->ToCharArray();
-		if (this->textBox1->Text->Length <= 0 || this->textBox2->Text->Length <= 0 || this->textBox3->Text->Length <= 0 || this->textBox4->Text->Length <= 0 || this->textBox5->Text->Length <= 0)
-		{
-			MessageBox::Show("Please fill all fields");
-			//return;
+		if ((this->textBox1->Text->Length <= MAX_SIZE_REG && this->textBox1->Text->Length > 3) ||
+			(this->textBox2->Text->Length <= MAX_SIZE_REG && this->textBox2->Text->Length > 3)) {
+			Registration^ r = gcnew Registration();
+			bool admin = false;
+
+			if (r->login(this->textBox2->Text, this->textBox1->Text, 1, this->checkBox1->Checked)) {
+				admin = true;
+			}
+			else {
+				if (!r->login(this->textBox2->Text, this->textBox1->Text, 0, this->checkBox1->Checked)) {
+					MessageBox::Show("Перепроверьте логин или пороль");
+				}
+			}
+			r->save();
+			this->Hide();
+			MainWindow^ mainWindow = gcnew MainWindow(admin,
+				gcnew ReturnFun(this, &RegistrationWindow::show));
+			mainWindow->Show();
 		}
-		this->Hide();
-		MainWindow^ mainWindow = gcnew MainWindow(true,
-			gcnew ReturnFun(this, &RegistrationWindow::show));
-		mainWindow->Show();
+		else {
+			MessageBox::Show("Логин и пороль должны быть не менее 4 символов и не более 20");
+		}
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		bool regok = false;
+		if ((this->textBox3->Text->Length <= 20 && this->textBox3->Text->Length > 3) ||
+			(this->textBox4->Text->Length <= 20 && this->textBox4->Text->Length > 3) ||
+			(this->textBox5->Text->Length <= 20 && this->textBox5->Text->Length > 3)) {
+			Registration^ r = gcnew Registration();
+			if (this->textBox5->Text == "AdMiN") {
+				if (r->addUser(this->textBox3->Text, this->textBox4->Text, 1)) {
+					MessageBox::Show("Вы успешно зарегистрировались");
+					regok = true;
+				}
+				else {
+					MessageBox::Show("Пользователь с таким логином уже существует");
+				}
+			}
+			else {
+				if (this->textBox4->Text == this->textBox5->Text) {
+					if (r->addUser(this->textBox3->Text, this->textBox4->Text, 0)) {
+						MessageBox::Show("Вы успешно зарегистрировались");
+						regok = true;
+					}
+					else {
+						MessageBox::Show("Пользователь с таким именим уже существует");
+					}
+				}
+				else {
+					MessageBox::Show("Повторный пороль не сопадает");
+				}
+			}
+			r->save();
+		}
+		else {
+			MessageBox::Show("Логин и пороль должны быть не менее 4 символов и не более 20");
+		}
+		if (regok) {
+			this->textBox3->Text = "";
+			this->textBox4->Text = "";
+			this->textBox5->Text = "";
+			this->tabControl1->SelectTab(0);
+		}
 	}
 	private: System::Void RegistrationWindow_Load(System::Object^ sender, System::EventArgs^ e) {
-
+		Registration^ r = gcnew Registration();
+		if (r->isLogin()) {
+			this->textBox2->Text = r->getLogin();
+			this->textBox1->Text = r->getPassword();
+			this->checkBox1->Checked = true;
+		}
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		switch (this->comboBox1->SelectedIndex)
 		{
 		case 0: {
-			System::Threading::Thread::CurrentThread->CurrentUICulture = gcnew System::Globalization::CultureInfo("ru");
+			System::Threading::Thread::CurrentThread->CurrentUICulture = gcnew System::Globalization::CultureInfo("en");
 			break;
 		}
 		case 1: {
-			System::Threading::Thread::CurrentThread->CurrentUICulture = gcnew System::Globalization::CultureInfo("en");
+			System::Threading::Thread::CurrentThread->CurrentUICulture = gcnew System::Globalization::CultureInfo("ru");
 			break;
 		}
 		case 2: {
@@ -320,7 +369,6 @@ namespace CACPP {
 		}
 		this->Controls->Clear();
 		InitializeComponent();
-
 	}
 	};
 }

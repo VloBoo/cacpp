@@ -145,6 +145,9 @@
     <EmbeddedResource Include="MainWindow.ru.resx">
       <DependentUpon>MainWindow.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RegistrationWindow.be.resx">
+      <DependentUpon>RegistrationWindow.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegistrationWindow.resx">
       <DependentUpon>RegistrationWindow.h</DependentUpon>
     </EmbeddedResource>

@@ -74,6 +74,12 @@ namespace CACPP {
 	private: bool admin;
 	private: ReturnFun^ rf;
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
+	private: System::Windows::Forms::ToolStripMenuItem^ backgroundToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ whiteToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ blackToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ skyblueToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator2;
+	private: System::Windows::Forms::ToolStripMenuItem^ logOutToolStripMenuItem;
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 		   /// <summary>
 		   /// Îáÿçàòåëüíàÿ ïåðåìåííàÿ êîíñòðóêòîðà.
@@ -100,6 +106,12 @@ namespace CACPP {
 			   this->russianÐóññêèéToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->englishEnglishToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->belarussianÁåëàðóñê³ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			   this->backgroundToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			   this->whiteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			   this->blackToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			   this->skyblueToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			   this->toolStripSeparator2 = (gcnew System::Windows::Forms::ToolStripSeparator());
+			   this->logOutToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->toolToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->viewToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
@@ -123,6 +135,7 @@ namespace CACPP {
 			   // 
 			   // menuStrip1
 			   // 
+			   this->menuStrip1->BackColor = System::Drawing::SystemColors::Window;
 			   this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
 				   this->fileToolStripMenuItem,
 					   this->settingToolStripMenuItem, this->toolToolStripMenuItem, this->viewToolStripMenuItem
@@ -168,7 +181,10 @@ namespace CACPP {
 			   // 
 			   // settingToolStripMenuItem
 			   // 
-			   this->settingToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->langToolStripMenuItem });
+			   this->settingToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				   this->langToolStripMenuItem,
+					   this->backgroundToolStripMenuItem, this->toolStripSeparator2, this->logOutToolStripMenuItem
+			   });
 			   this->settingToolStripMenuItem->Name = L"settingToolStripMenuItem";
 			   resources->ApplyResources(this->settingToolStripMenuItem, L"settingToolStripMenuItem");
 			   // 
@@ -199,6 +215,41 @@ namespace CACPP {
 			   resources->ApplyResources(this->belarussianÁåëàðóñê³ToolStripMenuItem, L"belarussianÁåëàðóñê³ToolStripMenuItem");
 			   this->belarussianÁåëàðóñê³ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::menuSettingLanguageBy);
 			   // 
+			   // backgroundToolStripMenuItem
+			   // 
+			   this->backgroundToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				   this->whiteToolStripMenuItem,
+					   this->blackToolStripMenuItem, this->skyblueToolStripMenuItem
+			   });
+			   this->backgroundToolStripMenuItem->Name = L"backgroundToolStripMenuItem";
+			   resources->ApplyResources(this->backgroundToolStripMenuItem, L"backgroundToolStripMenuItem");
+			   // 
+			   // whiteToolStripMenuItem
+			   // 
+			   this->whiteToolStripMenuItem->Name = L"whiteToolStripMenuItem";
+			   resources->ApplyResources(this->whiteToolStripMenuItem, L"whiteToolStripMenuItem");
+			   // 
+			   // blackToolStripMenuItem
+			   // 
+			   this->blackToolStripMenuItem->Name = L"blackToolStripMenuItem";
+			   resources->ApplyResources(this->blackToolStripMenuItem, L"blackToolStripMenuItem");
+			   // 
+			   // skyblueToolStripMenuItem
+			   // 
+			   this->skyblueToolStripMenuItem->Name = L"skyblueToolStripMenuItem";
+			   resources->ApplyResources(this->skyblueToolStripMenuItem, L"skyblueToolStripMenuItem");
+			   // 
+			   // toolStripSeparator2
+			   // 
+			   this->toolStripSeparator2->Name = L"toolStripSeparator2";
+			   resources->ApplyResources(this->toolStripSeparator2, L"toolStripSeparator2");
+			   // 
+			   // logOutToolStripMenuItem
+			   // 
+			   this->logOutToolStripMenuItem->Name = L"logOutToolStripMenuItem";
+			   resources->ApplyResources(this->logOutToolStripMenuItem, L"logOutToolStripMenuItem");
+			   this->logOutToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::logOutToolStripMenuItem_Click);
+			   // 
 			   // toolToolStripMenuItem
 			   // 
 			   this->toolToolStripMenuItem->Name = L"toolToolStripMenuItem";
@@ -211,6 +262,7 @@ namespace CACPP {
 			   // 
 			   // statusStrip1
 			   // 
+			   this->statusStrip1->BackColor = System::Drawing::SystemColors::Window;
 			   this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				   this->toolStripStatusLabel1,
 					   this->toolStripProgressBar1, this->toolStripStatusLabel2
@@ -270,6 +322,7 @@ namespace CACPP {
 			   // 
 			   // textBox2
 			   // 
+			   this->textBox2->BackColor = System::Drawing::SystemColors::Window;
 			   this->textBox2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			   resources->ApplyResources(this->textBox2, L"textBox2");
 			   this->textBox2->Name = L"textBox2";
@@ -287,6 +340,7 @@ namespace CACPP {
 			   // 
 			   resources->ApplyResources(this, L"$this");
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			   this->BackColor = System::Drawing::SystemColors::Window;
 			   this->Controls->Add(this->label1);
 			   this->Controls->Add(this->textBox2);
 			   this->Controls->Add(this->tabControl1);
@@ -337,7 +391,7 @@ namespace CACPP {
 
 	}
 	private: System::Void MainWindow_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		if (true) {//Çàìåíèòü
+		if (false) {//Çàìåíèòü
 			System::Windows::Forms::DialogResult^ dr;
 			dr = MessageBox::Show("Âû íå ñîõðàíèëè ôàéë", "Âûéòè?", MessageBoxButtons::YesNoCancel, MessageBoxIcon::Question, MessageBoxDefaultButton::Button3, MessageBoxOptions::DefaultDesktopOnly);
 			if (dr->Equals(System::Windows::Forms::DialogResult::Yes)) {
@@ -351,8 +405,9 @@ namespace CACPP {
 			}
 		}
 	}
+	private: bool clo = false;
 	private: System::Void MainWindow_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
-		this->rf(false);
+		this->rf(this->clo);
 	}
 	private: System::Void openFileToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->openFileDialog1->Filter = "*.cpp";
@@ -361,5 +416,9 @@ namespace CACPP {
 	private: System::Void savaFileAsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->saveFileDialog1->ShowDialog();
 	}
-	};
+	private: System::Void logOutToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->clo = true;
+		this->Close();
+	}
+};
 }

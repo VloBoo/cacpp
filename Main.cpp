@@ -1,5 +1,6 @@
 #include "RegistrationWindow.h"
 #include <Windows.h>
+
 using namespace CACPP;
 
 [STAThreadAttribute]
