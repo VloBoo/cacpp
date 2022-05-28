@@ -68,6 +68,7 @@ namespace CACPP {
 	private: System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
 
 
+
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -156,20 +157,18 @@ namespace CACPP {
 			// 
 			resources->ApplyResources(this->textBox2, L"textBox2");
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->TextChanged += gcnew System::EventHandler(this, &RegistrationWindow::textBox2_TextChanged);
 			// 
 			// textBox1
 			// 
 			resources->ApplyResources(this->textBox1, L"textBox1");
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &RegistrationWindow::textBox1_TextChanged);
 			// 
 			// button1
 			// 
 			resources->ApplyResources(this->button1, L"button1");
 			this->button1->Name = L"button1";
 			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &RegistrationWindow::button1_Click);
+			this->button1->Click += gcnew System::EventHandler(this, &RegistrationWindow::button1Click);
 			// 
 			// tabPage2
 			// 
@@ -212,7 +211,7 @@ namespace CACPP {
 			resources->ApplyResources(this->button2, L"button2");
 			this->button2->Name = L"button2";
 			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &RegistrationWindow::button2_Click);
+			this->button2->Click += gcnew System::EventHandler(this, &RegistrationWindow::button2Click);
 			// 
 			// textBox5
 			// 
@@ -243,7 +242,7 @@ namespace CACPP {
 			});
 			resources->ApplyResources(this->comboBox1, L"comboBox1");
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &RegistrationWindow::comboBox1_SelectedIndexChanged);
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &RegistrationWindow::selected);
 			// 
 			// openFileDialog1
 			// 
@@ -256,10 +255,13 @@ namespace CACPP {
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->tabControl1);
 			this->Cursor = System::Windows::Forms::Cursors::Default;
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->HelpButton = true;
 			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"RegistrationWindow";
-			this->Load += gcnew System::EventHandler(this, &RegistrationWindow::RegistrationWindow_Load);
+			this->ShowIcon = false;
+			this->Load += gcnew System::EventHandler(this, &RegistrationWindow::regwinLoad);
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();
@@ -273,12 +275,7 @@ namespace CACPP {
 	public: void show(bool logout) {
 		logout ? this->Show() : this->Close();
 	}
-
-	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button1Click(System::Object^ sender, System::EventArgs^ e) {
 		if ((this->textBox1->Text->Length <= MAX_SIZE_REG && this->textBox1->Text->Length > 3) ||
 			(this->textBox2->Text->Length <= MAX_SIZE_REG && this->textBox2->Text->Length > 3)) {
 			Registration^ r = gcnew Registration();
@@ -302,7 +299,7 @@ namespace CACPP {
 			MessageBox::Show("Логин и пороль должны быть не менее 4 символов и не более 20");
 		}
 	}
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button2Click(System::Object^ sender, System::EventArgs^ e) {
 		bool regok = false;
 		if ((this->textBox3->Text->Length <= 20 && this->textBox3->Text->Length > 3) ||
 			(this->textBox4->Text->Length <= 20 && this->textBox4->Text->Length > 3) ||
@@ -343,7 +340,7 @@ namespace CACPP {
 			this->tabControl1->SelectTab(0);
 		}
 	}
-	private: System::Void RegistrationWindow_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void regwinLoad(System::Object^ sender, System::EventArgs^ e) {
 		Registration^ r = gcnew Registration();
 		if (r->isLogin()) {
 			this->textBox2->Text = r->getLogin();
@@ -351,7 +348,7 @@ namespace CACPP {
 			this->checkBox1->Checked = true;
 		}
 	}
-	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void selected(System::Object^ sender, System::EventArgs^ e) {
 		switch (this->comboBox1->SelectedIndex)
 		{
 		case 0: {

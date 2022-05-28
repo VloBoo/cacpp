@@ -118,11 +118,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Analyzer.cpp" />
     <ClCompile Include="FileCPP.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Registration.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Analyzer.h" />
     <ClInclude Include="FileCPP.h" />
     <ClInclude Include="MainWindow.h">
       <FileType>CppForm</FileType>
@@ -131,6 +133,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Registration.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainWindow.be.resx">
@@ -154,6 +157,12 @@
     <EmbeddedResource Include="RegistrationWindow.ru.resx">
       <DependentUpon>RegistrationWindow.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -63,7 +63,7 @@ namespace CACPP {
 	}
 
 	bool Registration::addUser(String^ name, String^ password, bool admin) {
-		for each (User ^ u in this->users) {
+		for each (User^ u in this->users) {
 			if (u->login == name) {
 				return false;
 			}

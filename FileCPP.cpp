@@ -4,10 +4,7 @@ namespace CACPP {
 	FileCPP::FileCPP(String^ name) {
 		this->path = name;
 		this->text = gcnew String("");
-		if (path == "New") {
-
-		}
-		else {
+		if (path != "New") {
 			try {
 				StreamReader^ sr = gcnew StreamReader(this->path);
 				String^ line = sr->ReadLine();

@@ -24,6 +24,9 @@
     <ClCompile Include="FileCPP.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Analyzer.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainWindow.h">
@@ -38,5 +41,21 @@
     <ClInclude Include="FileCPP.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Analyzer.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="favicon.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
   </ItemGroup>
 </Project>
