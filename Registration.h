@@ -18,6 +18,7 @@ namespace CACPP {
 	using namespace System;
 	using namespace System::IO;	
 	using namespace System::Collections::Generic;
+	using namespace System::Security::Cryptography;
 	ref struct User {
 		String^ login;
 		String^ hash;

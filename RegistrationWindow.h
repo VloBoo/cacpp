@@ -66,6 +66,7 @@ namespace CACPP {
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
 	private: System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
+	private: System::Windows::Forms::HelpProvider^ helpProvider1;
 
 
 
@@ -106,6 +107,7 @@ namespace CACPP {
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->folderBrowserDialog1 = (gcnew System::Windows::Forms::FolderBrowserDialog());
+			this->helpProvider1 = (gcnew System::Windows::Forms::HelpProvider());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
@@ -248,10 +250,15 @@ namespace CACPP {
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
+			// helpProvider1
+			// 
+			resources->ApplyResources(this->helpProvider1, L"helpProvider1");
+			// 
 			// RegistrationWindow
 			// 
 			resources->ApplyResources(this, L"$this");
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::SystemColors::Window;
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->tabControl1);
 			this->Cursor = System::Windows::Forms::Cursors::Default;
@@ -287,6 +294,7 @@ namespace CACPP {
 			else {
 				if (!r->login(this->textBox2->Text, this->textBox1->Text, 0, this->checkBox1->Checked)) {
 					MessageBox::Show("Перепроверьте логин или пороль");
+					return;
 				}
 			}
 			r->save();
@@ -341,6 +349,7 @@ namespace CACPP {
 		}
 	}
 	private: System::Void regwinLoad(System::Object^ sender, System::EventArgs^ e) {
+		this->helpProvider1->SetShowHelp(this,true);
 		Registration^ r = gcnew Registration();
 		if (r->isLogin()) {
 			this->textBox2->Text = r->getLogin();
@@ -364,8 +373,21 @@ namespace CACPP {
 			break;
 		}
 		}
+		String^ byf = this->textBox1->Text;
+		String^ byf2 = this->textBox2->Text;
+		String^ byf3 = this->textBox3->Text;
+		String^ byf4 = this->textBox4->Text;
+		String^ byf5 = this->textBox5->Text;
+		bool byf6 = this->checkBox1->Checked;
 		this->Controls->Clear();
 		InitializeComponent();
+		this->textBox1->Text = byf;
+		this->textBox2->Text = byf2;
+		this->textBox3->Text = byf3;
+		this->textBox4->Text = byf4;
+		this->textBox5->Text = byf5;
+		this->checkBox1->Checked = byf6;
+		
 	}
 	};
 }

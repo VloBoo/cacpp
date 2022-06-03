@@ -118,24 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Файл</value>
-  </data>
-  <data name="settingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
-  </data>
-  <data name="settingToolStripMenuItem.Text" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 20</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Справка</value>
-  </data>
   <data name="createFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 22</value>
   </data>
@@ -178,56 +160,104 @@
   <data name="logOutToolStripMenuItem.Text" xml:space="preserve">
     <value>Выйти в меню регистрации</value>
   </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="whiteToolStripMenuItem.Text" xml:space="preserve">
+    <value>Белый</value>
+  </data>
+  <data name="blackToolStripMenuItem.Text" xml:space="preserve">
+    <value>Розовый</value>
+  </data>
+  <data name="skyblueToolStripMenuItem.Text" xml:space="preserve">
+    <value>Голубой</value>
+  </data>
   <data name="backgroundToolStripMenuItem.Text" xml:space="preserve">
     <value>Задний фон</value>
-  </data>
-  <data name="whiteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="blackToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="skyblueToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
   </data>
   <data name="fontToolStripMenuItem.Text" xml:space="preserve">
     <value>Шрифт</value>
   </data>
-  <data name="langToolStripMenuItem.Text" xml:space="preserve">
-    <value>Язык</value>
-  </data>
   <data name="russianРусскийToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
+    <value>213, 22</value>
   </data>
   <data name="russianРусскийToolStripMenuItem.Text" xml:space="preserve">
     <value>Русский (Русский)</value>
   </data>
   <data name="englishEnglishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
+    <value>213, 22</value>
   </data>
   <data name="englishEnglishToolStripMenuItem.Text" xml:space="preserve">
     <value>Английский (English)</value>
   </data>
   <data name="belarussianБеларускіToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
+    <value>213, 22</value>
   </data>
   <data name="belarussianБеларускіToolStripMenuItem.Text" xml:space="preserve">
-    <value>Беларуский (Беларускі)</value>
+    <value>Беларуский (Беларуская)</value>
   </data>
-  <data name="debugToolStripMenuItem.Text" xml:space="preserve">
-    <value>Отладка</value>
+  <data name="langToolStripMenuItem.Text" xml:space="preserve">
+    <value>Язык</value>
   </data>
   <data name="sizeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>139, 22</value>
   </data>
   <data name="sizeToolStripMenuItem.Text" xml:space="preserve">
     <value>Размер</value>
   </data>
   <data name="locationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>139, 22</value>
   </data>
   <data name="locationToolStripMenuItem.Text" xml:space="preserve">
     <value>Положение</value>
+  </data>
+  <data name="setToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 22</value>
+  </data>
+  <data name="debugToolStripMenuItem.Text" xml:space="preserve">
+    <value>Отладка</value>
+  </data>
+  <data name="settingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
+  </data>
+  <data name="settingToolStripMenuItem.Text" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="showHelpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="showHelpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Показать справку</value>
+  </data>
+  <data name="authorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="authorToolStripMenuItem.Text" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Справка</value>
+  </data>
+  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 17</value>
+  </data>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>Русский</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Ключевые слова</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Функции</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Переменные</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Анализатор кода</value>

@@ -1,4 +1,4 @@
- #include "Registration.h"
+#include "Registration.h"
 
 namespace CACPP {
 	Registration::Registration() {
@@ -31,25 +31,27 @@ namespace CACPP {
 	}
 
 	void Registration::save() {
-			StreamWriter^ sw = gcnew StreamWriter(this->path);
-			String^ a = (this->logF) ? "true" : "false";
-			sw->WriteLine(a);
-			if (logF) {
-				sw->WriteLine(this->nameL);
-				sw->WriteLine(this->passL);
-			}
-			for each (User^ u in this->users) {
-				sw->WriteLine(u->login);
-				sw->WriteLine(u->hash);
-			}
-			sw->Close();
+		StreamWriter^ sw = gcnew StreamWriter(this->path);
+		String^ a = (this->logF) ? "true" : "false";
+		sw->WriteLine(a);
+		if (logF) {
+			sw->WriteLine(this->nameL);
+			sw->WriteLine(this->passL);
+		}
+		for each (User ^ u in this->users) {
+			sw->WriteLine(u->login);
+			sw->WriteLine(u->hash);
+		}
+		sw->Close();
 	}
 
 	bool Registration::login(String^ name, String^ password, bool admin, bool loggedin) {
 		for each (User ^ u in this->users) {
 			if (u->login == name) {
-				String^ a = password->Copy(password) + ((admin) ? ("+") : ("-"));///ÒÓÒ ÍÅÎÁÕÎÄÈÌÎ ÕÅØÈĞÎÂÀÍÈÅ
-				if (u->hash==a) {
+				SHA1^ sha = gcnew SHA1CryptoServiceProvider;
+
+				String^ a = (gcnew String(password->Copy(password) + ((admin) ? ("+") : ("-"))))->GetHashCode().ToString();///ÒÓÒ ÍÅÎÁÕÎÄÈÌÎ ÕÅØÈĞÎÂÀÍÈÅ
+				if (u->hash == a) {
 					if (loggedin) {
 						this->logF = true;
 						this->nameL = name;
@@ -63,14 +65,14 @@ namespace CACPP {
 	}
 
 	bool Registration::addUser(String^ name, String^ password, bool admin) {
-		for each (User^ u in this->users) {
+		for each (User ^ u in this->users) {
 			if (u->login == name) {
 				return false;
 			}
 		}
 		User^ user = gcnew User();
 		user->login = name;
-		user->hash = password->Copy(password) + ((admin) ? ("+") : ("-"));///ÒÓÒ ÍÅÎÁÕÎÄÈÌÎ ÕÅØÈĞÎÂÀÍÈÅ
+		user->hash = (gcnew String(password->Copy(password) + ((admin) ? ("+") : ("-"))))->GetHashCode().ToString();///ÒÓÒ ÍÅÎÁÕÎÄÈÌÎ ÕÅØÈĞÎÂÀÍÈÅ
 		this->users->Add(user);
 		return true;
 	}
