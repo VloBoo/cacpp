@@ -14,7 +14,7 @@ namespace CACPP {
 				this->nameL = sr->ReadLine();
 				this->passL = sr->ReadLine();
 			}
-			line = sr->ReadLine();
+			line = sr->ReadLine(); 
 			while (line != nullptr) {
 				User^ user = gcnew User();
 				user->login = line;
@@ -26,7 +26,7 @@ namespace CACPP {
 			sr->Close();
 		}
 		catch (FileNotFoundException^ e) {
-			//Ñòàíäàğòíàÿ îøèáêà ïğè îòñóòñòâèè ôàéëà. Èãíîğèğîâàòü.
+			//Âñå äîëæíî áûòü îê
 		}
 	}
 
@@ -50,7 +50,7 @@ namespace CACPP {
 			if (u->login == name) {
 				SHA1^ sha = gcnew SHA1CryptoServiceProvider;
 
-				String^ a = (gcnew String(password->Copy(password) + ((admin) ? ("+") : ("-"))))->GetHashCode().ToString();///ÒÓÒ ÍÅÎÁÕÎÄÈÌÎ ÕÅØÈĞÎÂÀÍÈÅ
+				String^ a = (gcnew String(password->Copy(password) + ((admin) ? ("+") : ("-"))))->GetHashCode().ToString();///                          
 				if (u->hash == a) {
 					if (loggedin) {
 						this->logF = true;
@@ -72,7 +72,7 @@ namespace CACPP {
 		}
 		User^ user = gcnew User();
 		user->login = name;
-		user->hash = (gcnew String(password->Copy(password) + ((admin) ? ("+") : ("-"))))->GetHashCode().ToString();///ÒÓÒ ÍÅÎÁÕÎÄÈÌÎ ÕÅØÈĞÎÂÀÍÈÅ
+		user->hash = (gcnew String(password->Copy(password) + ((admin) ? ("+") : ("-"))))->GetHashCode().ToString();///                          
 		this->users->Add(user);
 		return true;
 	}

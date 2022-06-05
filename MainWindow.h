@@ -96,6 +96,7 @@ namespace CACPP {
 	private: ReturnFun^ rf;
 	private: FileCPP^ filecpp;
 	private: GenSize^ size;
+	private: List<Obj^>^ funs;
 	private: System::Drawing::Color color1;
 	private: System::Drawing::Color color2;
 	private: System::Drawing::Color color3;
@@ -124,9 +125,10 @@ namespace CACPP {
 	private: System::Windows::Forms::ToolStripMenuItem^ authorToolStripMenuItem;
 	private: System::Windows::Forms::ListBox^ listBox2;
 	private: System::Windows::Forms::ListBox^ listBox3;
-private: System::Windows::Forms::HelpProvider^ helpProvider1;
-private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator4;
-private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
+	private: System::Windows::Forms::HelpProvider^ helpProvider1;
+	private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator4;
+	private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripStatusLabel^ toolStripStatusLabel2;
 
 
 
@@ -163,6 +165,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   this->toolStripSeparator1 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			   this->savaFileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->savaFileAsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			   this->toolStripSeparator4 = (gcnew System::Windows::Forms::ToolStripSeparator());
+			   this->analyzeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->toolStripSeparator3 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			   this->exitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->logOutToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -186,6 +190,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   this->authorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
 			   this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
+			   this->toolStripStatusLabel2 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			   this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			   this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			   this->listBox1 = (gcnew System::Windows::Forms::ListBox());
@@ -199,8 +204,6 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			   this->fontDialog1 = (gcnew System::Windows::Forms::FontDialog());
 			   this->helpProvider1 = (gcnew System::Windows::Forms::HelpProvider());
-			   this->analyzeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			   this->toolStripSeparator4 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			   this->menuStrip1->SuspendLayout();
 			   this->statusStrip1->SuspendLayout();
 			   this->tabControl1->SuspendLayout();
@@ -218,6 +221,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   });
 			   resources->ApplyResources(this->menuStrip1, L"menuStrip1");
 			   this->menuStrip1->Name = L"menuStrip1";
+			   this->helpProvider1->SetShowHelp(this->menuStrip1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"menuStrip1.ShowHelp"))));
 			   // 
 			   // fileToolStripMenuItem
 			   // 
@@ -231,14 +235,14 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   // 
 			   // createFileToolStripMenuItem
 			   // 
-			   this->createFileToolStripMenuItem->Name = L"createFileToolStripMenuItem";
 			   resources->ApplyResources(this->createFileToolStripMenuItem, L"createFileToolStripMenuItem");
+			   this->createFileToolStripMenuItem->Name = L"createFileToolStripMenuItem";
 			   this->createFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::newFile);
 			   // 
 			   // openFileToolStripMenuItem
 			   // 
-			   this->openFileToolStripMenuItem->Name = L"openFileToolStripMenuItem";
 			   resources->ApplyResources(this->openFileToolStripMenuItem, L"openFileToolStripMenuItem");
+			   this->openFileToolStripMenuItem->Name = L"openFileToolStripMenuItem";
 			   this->openFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::openFile);
 			   // 
 			   // toolStripSeparator1
@@ -248,15 +252,26 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   // 
 			   // savaFileToolStripMenuItem
 			   // 
-			   this->savaFileToolStripMenuItem->Name = L"savaFileToolStripMenuItem";
 			   resources->ApplyResources(this->savaFileToolStripMenuItem, L"savaFileToolStripMenuItem");
+			   this->savaFileToolStripMenuItem->Name = L"savaFileToolStripMenuItem";
 			   this->savaFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::saveFile);
 			   // 
 			   // savaFileAsToolStripMenuItem
 			   // 
-			   this->savaFileAsToolStripMenuItem->Name = L"savaFileAsToolStripMenuItem";
 			   resources->ApplyResources(this->savaFileAsToolStripMenuItem, L"savaFileAsToolStripMenuItem");
+			   this->savaFileAsToolStripMenuItem->Name = L"savaFileAsToolStripMenuItem";
 			   this->savaFileAsToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::saveFileAs);
+			   // 
+			   // toolStripSeparator4
+			   // 
+			   this->toolStripSeparator4->Name = L"toolStripSeparator4";
+			   resources->ApplyResources(this->toolStripSeparator4, L"toolStripSeparator4");
+			   // 
+			   // analyzeToolStripMenuItem
+			   // 
+			   resources->ApplyResources(this->analyzeToolStripMenuItem, L"analyzeToolStripMenuItem");
+			   this->analyzeToolStripMenuItem->Name = L"analyzeToolStripMenuItem";
+			   this->analyzeToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::menuAnalyzer);
 			   // 
 			   // toolStripSeparator3
 			   // 
@@ -265,8 +280,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   // 
 			   // exitToolStripMenuItem
 			   // 
-			   this->exitToolStripMenuItem->Name = L"exitToolStripMenuItem";
 			   resources->ApplyResources(this->exitToolStripMenuItem, L"exitToolStripMenuItem");
+			   this->exitToolStripMenuItem->Name = L"exitToolStripMenuItem";
 			   this->exitToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::menuExit);
 			   // 
 			   // logOutToolStripMenuItem
@@ -290,8 +305,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 				   this->whiteToolStripMenuItem,
 					   this->blackToolStripMenuItem, this->skyblueToolStripMenuItem
 			   });
-			   this->backgroundToolStripMenuItem->Name = L"backgroundToolStripMenuItem";
 			   resources->ApplyResources(this->backgroundToolStripMenuItem, L"backgroundToolStripMenuItem");
+			   this->backgroundToolStripMenuItem->Name = L"backgroundToolStripMenuItem";
 			   // 
 			   // whiteToolStripMenuItem
 			   // 
@@ -313,8 +328,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   // 
 			   // fontToolStripMenuItem
 			   // 
-			   this->fontToolStripMenuItem->Name = L"fontToolStripMenuItem";
 			   resources->ApplyResources(this->fontToolStripMenuItem, L"fontToolStripMenuItem");
+			   this->fontToolStripMenuItem->Name = L"fontToolStripMenuItem";
 			   this->fontToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::menuFont);
 			   // 
 			   // langToolStripMenuItem
@@ -323,8 +338,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 				   this->russianÐóññêèéToolStripMenuItem,
 					   this->englishEnglishToolStripMenuItem, this->belarussianÁåëàðóñê³ToolStripMenuItem
 			   });
-			   this->langToolStripMenuItem->Name = L"langToolStripMenuItem";
 			   resources->ApplyResources(this->langToolStripMenuItem, L"langToolStripMenuItem");
+			   this->langToolStripMenuItem->Name = L"langToolStripMenuItem";
 			   // 
 			   // russianÐóññêèéToolStripMenuItem
 			   // 
@@ -387,26 +402,35 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   // 
 			   // showHelpToolStripMenuItem
 			   // 
-			   this->showHelpToolStripMenuItem->Name = L"showHelpToolStripMenuItem";
 			   resources->ApplyResources(this->showHelpToolStripMenuItem, L"showHelpToolStripMenuItem");
+			   this->showHelpToolStripMenuItem->Name = L"showHelpToolStripMenuItem";
 			   this->showHelpToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::showHelp);
 			   // 
 			   // authorToolStripMenuItem
 			   // 
 			   this->authorToolStripMenuItem->Name = L"authorToolStripMenuItem";
 			   resources->ApplyResources(this->authorToolStripMenuItem, L"authorToolStripMenuItem");
-			   this->authorToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::authorToolStripMenuItem_Click);
+			   this->authorToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::menuAuthor);
 			   // 
 			   // statusStrip1
 			   // 
-			   this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->toolStripStatusLabel1 });
+			   this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				   this->toolStripStatusLabel1,
+					   this->toolStripStatusLabel2
+			   });
 			   resources->ApplyResources(this->statusStrip1, L"statusStrip1");
 			   this->statusStrip1->Name = L"statusStrip1";
+			   this->helpProvider1->SetShowHelp(this->statusStrip1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"statusStrip1.ShowHelp"))));
 			   // 
 			   // toolStripStatusLabel1
 			   // 
 			   this->toolStripStatusLabel1->Name = L"toolStripStatusLabel1";
 			   resources->ApplyResources(this->toolStripStatusLabel1, L"toolStripStatusLabel1");
+			   // 
+			   // toolStripStatusLabel2
+			   // 
+			   this->toolStripStatusLabel2->Name = L"toolStripStatusLabel2";
+			   resources->ApplyResources(this->toolStripStatusLabel2, L"toolStripStatusLabel2");
 			   // 
 			   // tabControl1
 			   // 
@@ -416,12 +440,14 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   resources->ApplyResources(this->tabControl1, L"tabControl1");
 			   this->tabControl1->Name = L"tabControl1";
 			   this->tabControl1->SelectedIndex = 0;
+			   this->helpProvider1->SetShowHelp(this->tabControl1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"tabControl1.ShowHelp"))));
 			   // 
 			   // tabPage1
 			   // 
 			   this->tabPage1->Controls->Add(this->listBox1);
 			   resources->ApplyResources(this->tabPage1, L"tabPage1");
 			   this->tabPage1->Name = L"tabPage1";
+			   this->helpProvider1->SetShowHelp(this->tabPage1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"tabPage1.ShowHelp"))));
 			   // 
 			   // listBox1
 			   // 
@@ -429,12 +455,14 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   this->listBox1->FormattingEnabled = true;
 			   resources->ApplyResources(this->listBox1, L"listBox1");
 			   this->listBox1->Name = L"listBox1";
+			   this->helpProvider1->SetShowHelp(this->listBox1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"listBox1.ShowHelp"))));
 			   // 
 			   // tabPage2
 			   // 
 			   this->tabPage2->Controls->Add(this->listBox2);
 			   resources->ApplyResources(this->tabPage2, L"tabPage2");
 			   this->tabPage2->Name = L"tabPage2";
+			   this->helpProvider1->SetShowHelp(this->tabPage2, (cli::safe_cast<System::Boolean>(resources->GetObject(L"tabPage2.ShowHelp"))));
 			   this->tabPage2->UseVisualStyleBackColor = true;
 			   // 
 			   // listBox2
@@ -443,12 +471,15 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   this->listBox2->FormattingEnabled = true;
 			   resources->ApplyResources(this->listBox2, L"listBox2");
 			   this->listBox2->Name = L"listBox2";
+			   this->helpProvider1->SetShowHelp(this->listBox2, (cli::safe_cast<System::Boolean>(resources->GetObject(L"listBox2.ShowHelp"))));
+			   this->listBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &MainWindow::pickList2);
 			   // 
 			   // tabPage3
 			   // 
 			   this->tabPage3->Controls->Add(this->listBox3);
 			   resources->ApplyResources(this->tabPage3, L"tabPage3");
 			   this->tabPage3->Name = L"tabPage3";
+			   this->helpProvider1->SetShowHelp(this->tabPage3, (cli::safe_cast<System::Boolean>(resources->GetObject(L"tabPage3.ShowHelp"))));
 			   this->tabPage3->UseVisualStyleBackColor = true;
 			   // 
 			   // listBox3
@@ -457,11 +488,13 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   this->listBox3->FormattingEnabled = true;
 			   resources->ApplyResources(this->listBox3, L"listBox3");
 			   this->listBox3->Name = L"listBox3";
+			   this->helpProvider1->SetShowHelp(this->listBox3, (cli::safe_cast<System::Boolean>(resources->GetObject(L"listBox3.ShowHelp"))));
 			   // 
 			   // label1
 			   // 
 			   resources->ApplyResources(this->label1, L"label1");
 			   this->label1->Name = L"label1";
+			   this->helpProvider1->SetShowHelp(this->label1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"label1.ShowHelp"))));
 			   // 
 			   // saveFileDialog1
 			   // 
@@ -476,22 +509,13 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   this->richTextBox1->AcceptsTab = true;
 			   resources->ApplyResources(this->richTextBox1, L"richTextBox1");
 			   this->richTextBox1->Name = L"richTextBox1";
+			   this->helpProvider1->SetShowHelp(this->richTextBox1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"richTextBox1.ShowHelp"))));
+			   this->richTextBox1->SelectionChanged += gcnew System::EventHandler(this, &MainWindow::selectionChanged);
 			   this->richTextBox1->TextChanged += gcnew System::EventHandler(this, &MainWindow::textChanged);
 			   // 
 			   // helpProvider1
 			   // 
 			   resources->ApplyResources(this->helpProvider1, L"helpProvider1");
-			   // 
-			   // analyzeToolStripMenuItem
-			   // 
-			   this->analyzeToolStripMenuItem->Name = L"analyzeToolStripMenuItem";
-			   resources->ApplyResources(this->analyzeToolStripMenuItem, L"analyzeToolStripMenuItem");
-			   this->analyzeToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::analyzeToolStripMenuItem_Click);
-			   // 
-			   // toolStripSeparator4
-			   // 
-			   this->toolStripSeparator4->Name = L"toolStripSeparator4";
-			   resources->ApplyResources(this->toolStripSeparator4, L"toolStripSeparator4");
 			   // 
 			   // MainWindow
 			   // 
@@ -505,6 +529,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 			   this->KeyPreview = true;
 			   this->MainMenuStrip = this->menuStrip1;
 			   this->Name = L"MainWindow";
+			   this->helpProvider1->SetShowHelp(this, (cli::safe_cast<System::Boolean>(resources->GetObject(L"$this.ShowHelp"))));
 			   this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MainWindow::winClosing);
 			   this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &MainWindow::winClosed);
 			   this->Load += gcnew System::EventHandler(this, &MainWindow::winLoad);
@@ -533,6 +558,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 		update("be");
 	}
 	private: void update(String^ language) {
+		this->textChangedEnable = false;
 		System::Threading::Thread::CurrentThread->CurrentUICulture = gcnew System::Globalization::CultureInfo(language);
 		String^ byf = this->richTextBox1->Text;
 		String^ byf2 = this->label1->Text;
@@ -547,6 +573,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 		this->listBox1->Text = byf3;
 		this->listBox2->Text = byf4;
 		this->listBox3->Text = byf5;
+		this->textChangedEnable = true;
 	}
 	private: System::Void winLoad(System::Object^ sender, System::EventArgs^ e) {
 		if (!this->admin) {
@@ -561,10 +588,16 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 		this->size->PanelH = this->tabControl1->Height;
 		this->size->PanelWPoint = this->tabControl1->Location.X;
 		this->size->PanelListH = this->listBox1->Height;
-		menuBackgroundWhite(nullptr,nullptr);
+		menuBackgroundWhite(nullptr, nullptr);
+		this->listBox1->ForeColor = System::Drawing::SystemColors::ScrollBar;
+		this->listBox2->ForeColor = System::Drawing::SystemColors::ScrollBar;
+		this->listBox3->ForeColor = System::Drawing::SystemColors::ScrollBar;
+		this->listBox1->Enabled = false;
+		this->listBox2->Enabled = false;
+		this->listBox3->Enabled = false;
 	}
 	private: System::Void winClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		e->Cancel = !open();
+			e->Cancel = !open();
 	}
 	private: bool clo = false;
 	private: System::Void winClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
@@ -575,14 +608,27 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 		this->Close();
 	}
 
+	private: bool textChangedEnable = true;
 	private: System::Void textChanged(System::Object^ sender, System::EventArgs^ e) {
-		if (this->filecpp->Path == "New" && this->richTextBox1->Text == "") {
-			this->filecpp->Status = false;
-			this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
-		}
-		else {
-			this->filecpp->Status = true;
-			this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
+		if (this->textChangedEnable) {
+			if (this->filecpp->Path == "New" && this->richTextBox1->Text == "") {
+				this->filecpp->Status = false;
+				this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
+			}
+			else {
+				this->filecpp->Status = true;
+				this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
+			}
+			int buf = this->richTextBox1->SelectionStart;
+			this->richTextBox1->SelectAll();
+			this->richTextBox1->SelectionColor = System::Drawing::SystemColors::WindowText;
+			this->richTextBox1->SelectionStart = buf;
+			this->listBox1->ForeColor = System::Drawing::SystemColors::ScrollBar;
+			this->listBox2->ForeColor = System::Drawing::SystemColors::ScrollBar;
+			this->listBox3->ForeColor = System::Drawing::SystemColors::ScrollBar;
+			this->listBox1->Enabled = false;
+			this->listBox2->Enabled = false;
+			this->listBox3->Enabled = false;
 		}
 	}
 
@@ -715,8 +761,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 		this->tabPage3->BackColor = this->color1;
 	}
 	private: System::Void debugSize(System::Object^ sender, System::EventArgs^ e) {
-		String^ a = "hello";
-		MessageBox::Show(a,a->GetHashCode().ToString() );
+		debug("off");
 	}
 	private: System::Void winResize(System::Object^ sender, System::EventArgs^ e) {
 		this->richTextBox1->Height = this->size->TextH - (this->size->WinH - this->Height);
@@ -739,12 +784,11 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 		this->Close();
 	}
 	private: System::Void menuFont(System::Object^ sender, System::EventArgs^ e) {
-		bool buf = this->filecpp->Status;
+		this->textChangedEnable = false;
 		this->fontDialog1->Font = this->richTextBox1->Font;
 		this->fontDialog1->ShowDialog();
 		this->richTextBox1->Font = this->fontDialog1->Font;
-		this->filecpp->Status = buf;
-		this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
+		this->textChangedEnable = true;
 	}
 	private: System::Void setToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Width = 360;
@@ -753,14 +797,101 @@ private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 	private: System::Void showHelp(System::Object^ sender, System::EventArgs^ e) {
 		this->richTextBox1->Focus();
 		this->helpProvider1->SetShowHelp(this, true);
-		this->helpProvider1->HelpNamespace="https://github.com/VloBoo/cacpp";
+		this->helpProvider1->HelpNamespace = "https://github.com/VloBoo/cacpp";
 	}
-	private: System::Void authorToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void menuAuthor(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Application: CACPP 0.4.0.0\nMade by Uladzislau \"VloBo\" Charniakou (C) 2022\nCurseWork on OAIP (KBP)\nMore: https://github.com/VloBoo/cacpp", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information, MessageBoxDefaultButton::Button1);
 	}
-private: System::Void analyzeToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	save(false);
-	Analyzer^ analyzer = gcnew Analyzer(this->filecpp->Text);
-}
-};
+	private: System::Void menuAnalyzer(System::Object^ sender, System::EventArgs^ e) {
+		this->textChangedEnable = false;
+
+		this->funs = gcnew List<Obj^>();
+
+		this->richTextBox1->SelectAll();
+		this->richTextBox1->SelectionColor = System::Drawing::SystemColors::WindowText;
+		this->listBox1->Items->Clear();
+		this->listBox2->Items->Clear();
+		this->listBox3->Items->Clear();
+
+		//=================Ôóíêöèè=================
+		Regex^ reg = gcnew Regex("(([a-zA-Z]+)[\\r\\n ]*\\([^)]*\\))[\\r\\n ]*\\{[^}]*\\}");
+		for each (Match ^ match in reg->Matches(this->richTextBox1->Text)) {
+			if (match->Groups[1]->Value != "each" &&
+				match->Groups[1]->Value != "while" &&
+				match->Groups[1]->Value != "catch" &&
+				match->Groups[1]->Value != "for") {
+				Obj^ buf = gcnew Obj();
+				buf->name = match->Groups[1]->Value;
+				buf->index = match->Groups[2]->Index;
+				this->funs->Add(buf);
+
+				//Êðàñèì òåêñò
+				this->richTextBox1->Select(match->Groups[2]->Index, match->Groups[2]->Length);
+				this->richTextBox1->SelectionColor = System::Drawing::Color::FromArgb(
+					static_cast<System::Int32>(static_cast<System::Byte>(255)), //r
+					static_cast<System::Int32>(static_cast<System::Byte>(0)), //g
+					static_cast<System::Int32>(static_cast<System::Byte>(0)));//b
+			}
+		}
+		//Íóæíî îòñîðòèðîâàòü
+		for each (Obj ^ a in this->funs) {
+			this->listBox2->Items->Add(a->name);
+
+		}
+
+		//=================Ïåðåìåííûå=================
+		reg = gcnew Regex("\\b((int|char|long|bool|wchar_t|char16_t|char32_t|short|float|double|void)[\\r\\n ]*[*|\\^]*[\\r\\n ]*([a-zA-Z])+)[\\r\\n ]*=");
+		for each (Match ^ match in reg->Matches(this->richTextBox1->Text)) {
+			Obj^ buf = gcnew Obj();
+			buf->name = match->Value;
+			buf->index = match->Groups[1]->Index;
+			this->listBox3->Items->Add(match->Groups[1]->Value);
+
+			//Êðàñèì òåêñò
+			this->richTextBox1->Select(match->Groups[1]->Index, match->Groups[1]->Length);
+			this->richTextBox1->SelectionColor = System::Drawing::Color::FromArgb(
+				static_cast<System::Int32>(static_cast<System::Byte>(255)), //r
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), //g
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));//b
+		}
+
+		//=================Êëþ÷Ñëîâ=================
+		for each (String ^ keyWord in initKeyword()) {
+			reg = gcnew Regex("\\b" + keyWord + "\\b");
+			int buf = 0;
+			for each (Match ^ match in reg->Matches(this->richTextBox1->Text)) {
+				this->richTextBox1->Select(match->Index, match->Length);
+				this->richTextBox1->SelectionColor = System::Drawing::Color::FromArgb(
+					static_cast<System::Int32>(static_cast<System::Byte>(0)), //r
+					static_cast<System::Int32>(static_cast<System::Byte>(0)), //g
+					static_cast<System::Int32>(static_cast<System::Byte>(255)));//b
+				buf++;
+			}
+			if (buf != 0) {
+				this->listBox1->Items->Add(keyWord + " \t\t" + buf.ToString());
+			}
+		}
+
+		this->listBox1->ForeColor = System::Drawing::SystemColors::WindowText;
+		this->listBox2->ForeColor = System::Drawing::SystemColors::WindowText;
+		this->listBox3->ForeColor = System::Drawing::SystemColors::WindowText;
+		this->listBox1->Enabled = true;
+		this->listBox2->Enabled = true;
+		this->listBox3->Enabled = true;
+
+		this->textChangedEnable = true;
+	}
+	private: System::Void pickList2(System::Object^ sender, System::EventArgs^ e) {
+		for each (Obj ^ a in this->funs) {
+			if (this->listBox2->Items[this->listBox2->SelectedIndex]->ToString() == a->name) {
+				this->richTextBox1->Focus();
+				this->richTextBox1->SelectionStart = a->index;
+			}
+		}
+	}
+
+	private: System::Void selectionChanged(System::Object^ sender, System::EventArgs^ e) {
+		this->toolStripStatusLabel2->Text = "|   " + this->richTextBox1->SelectionStart.ToString();
+	}
+	};
 }
