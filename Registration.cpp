@@ -26,7 +26,7 @@ namespace CACPP {
 			sr->Close();
 		}
 		catch (FileNotFoundException^ e) {
-			//Все должно быть ок
+			//                  
 		}
 	}
 

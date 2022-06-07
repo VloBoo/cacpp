@@ -118,12 +118,202 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TL5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TL5.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="TL5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>247, 80</value>
+  </data>
+  <metadata name="helpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>462, 17</value>
+  </metadata>
+  <data name="helpProvider1.HelpNamespace" xml:space="preserve">
+    <value>https://github.com/VloBoo/cacpp</value>
+  </data>
+  <data name="TL5.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TL5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 13</value>
+  </data>
+  <data name="TL5.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="TL5.Text" xml:space="preserve">
+    <value>Passwords do not match</value>
+  </data>
+  <data name="TL5.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;TL5.Name" xml:space="preserve">
+    <value>TL5</value>
+  </data>
+  <data name="&gt;&gt;TL5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TL5.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;TL5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TL4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TL4.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TL4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>250, 63</value>
+  </data>
+  <data name="TL4.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TL4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="TL4.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="TL4.Text" xml:space="preserve">
+    <value>Login already taken</value>
+  </data>
+  <data name="TL4.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;TL4.Name" xml:space="preserve">
+    <value>TL4</value>
+  </data>
+  <data name="&gt;&gt;TL4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TL4.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;TL4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TL3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TL3.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TL3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>247, 46</value>
+  </data>
+  <data name="TL3.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TL3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 13</value>
+  </data>
+  <data name="TL3.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="TL3.Text" xml:space="preserve">
+    <value>You are regisreted</value>
+  </data>
+  <data name="TL3.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;TL3.Name" xml:space="preserve">
+    <value>TL3</value>
+  </data>
+  <data name="&gt;&gt;TL3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TL3.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;TL3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TL2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TL2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TL2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>247, 29</value>
+  </data>
+  <data name="TL2.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TL2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>277, 13</value>
+  </data>
+  <data name="TL2.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="TL2.Text" xml:space="preserve">
+    <value>Login and password must contain from 4 to 20 characters
+</value>
+  </data>
+  <data name="TL2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;TL2.Name" xml:space="preserve">
+    <value>TL2</value>
+  </data>
+  <data name="&gt;&gt;TL2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TL2.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;TL2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="TL1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TL1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TL1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>244, 12</value>
+  </data>
+  <data name="TL1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TL1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 13</value>
+  </data>
+  <data name="TL1.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="TL1.Text" xml:space="preserve">
+    <value>Check your login or password</value>
+  </data>
+  <data name="TL1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;TL1.Name" xml:space="preserve">
+    <value>TL1</value>
+  </data>
+  <data name="&gt;&gt;TL1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TL1.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;TL1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>78, 137</value>
+  </data>
+  <data name="checkBox1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 17</value>
@@ -144,13 +334,16 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;checkBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>5</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>74, 95</value>
+  </data>
+  <data name="label3.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 13</value>
@@ -171,13 +364,16 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>6</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>74, 55</value>
+  </data>
+  <data name="label2.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 13</value>
@@ -198,7 +394,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -208,6 +404,9 @@
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>98, 12</value>
+  </data>
+  <data name="label1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 31</value>
@@ -228,10 +427,13 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>8</value>
   </data>
   <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>74, 70</value>
+  </data>
+  <data name="textBox2.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="textBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 20</value>
@@ -249,13 +451,16 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;textBox2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>9</value>
   </data>
   <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>74, 110</value>
   </data>
   <data name="textBox1.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>*</value>
+  </data>
+  <data name="textBox1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 20</value>
@@ -273,10 +478,13 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>10</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 180</value>
+  </data>
+  <data name="button1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 23</value>
@@ -297,7 +505,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>11</value>
   </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -305,6 +513,9 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPage1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 242</value>
@@ -333,6 +544,9 @@
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 223</value>
   </data>
+  <data name="label8.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 13</value>
   </data>
@@ -359,6 +573,9 @@
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>74, 135</value>
+  </data>
+  <data name="label7.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 13</value>
@@ -387,6 +604,9 @@
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>74, 95</value>
   </data>
+  <data name="label6.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 13</value>
   </data>
@@ -414,6 +634,9 @@
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>74, 55</value>
   </data>
+  <data name="label5.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 13</value>
   </data>
@@ -437,6 +660,9 @@
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 180</value>
+  </data>
+  <data name="button2.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 23</value>
@@ -465,6 +691,9 @@
   <data name="textBox5.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>*</value>
   </data>
+  <data name="textBox5.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="textBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 20</value>
   </data>
@@ -489,6 +718,9 @@
   <data name="textBox4.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>*</value>
   </data>
+  <data name="textBox4.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="textBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 20</value>
   </data>
@@ -509,6 +741,9 @@
   </data>
   <data name="textBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>74, 70</value>
+  </data>
+  <data name="textBox3.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="textBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 20</value>
@@ -537,6 +772,9 @@
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>98, 12</value>
   </data>
+  <data name="label4.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 31</value>
   </data>
@@ -564,6 +802,9 @@
   <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
+  <data name="tabPage2.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 242</value>
   </data>
@@ -587,6 +828,9 @@
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
+  </data>
+  <data name="tabControl1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>309, 268</value>
@@ -618,6 +862,9 @@
   <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>174, 7</value>
   </data>
+  <data name="comboBox1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 21</value>
   </data>
@@ -648,12 +895,6 @@
   <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>293, 17</value>
   </metadata>
-  <metadata name="helpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>462, 17</value>
-  </metadata>
-  <data name="helpProvider1.HelpNamespace" xml:space="preserve">
-    <value>https://github.com/VloBoo/cacpp</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1216,6 +1457,9 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 </value>
+  </data>
+  <data name="$this.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Registration</value>

@@ -1,19 +1,6 @@
 #pragma once
 
 #define MAX_SIZE_REG 20//Ìאךסטלאכüםאÿ הכטםםא ןמנמכÿ
-/// <summary>
-/// ÀÕÀÕÀÕÀÕÀÕÀÕ 
-/// ‗ ÃÅÍÈÉ, ‗ ÁÅÇÓÌÅÍ, ÎÁÅÐÍÈ ÑÂÎÈ ÍÅÄÎÑÒÀÒÊÈ Â ÑÂÎÈ ÄÎÑÒÎÈÍÑÒÂÀ, 
-/// ÀÕÀÕÕÀÕÀÕÀÕÕÀÕÀÕÕÀÕÀÕÀÕÀÕÀÕ
-/// ÀÕÕÀÕÀÕÀÕÀÕÀÕÀÕÀÕÀÕÀÕÀÕÀÕÀÕÀÕ
-/// ÀÕÀÕÀÕÀÕÀÕÀÕÀÕ
-/// ÀÕÀÕÀÕÀÕ
-/// ÀÕÀÕÀÕÀÕÀÕÀÕÀÕ
-/// ÀÕÀÕÀÕÀÕÀÕÀÕÀ
-/// ÀÕÀÕÀÕÀÕÀÕÀÕÀÕÕÀÕÀ
-/// ÕÀÕÀÕÕÀÕÀÕÀÕÀÕÀÕÀÕÕÀÕÀÕÀ
-/// Åסכט זטחםü חאסעאגכÿוע עובÿ ןטסאעü םא ןמךמכוקוםםûץ ןכ‏סא סמ סלוסü‏ ראנןא, עמ םו ןûעאיסÿ ןטסאעü םא ןכ‏סאץ, ןטרט םא ראנןו.
-/// </summary>
 namespace CACPP {
 	using namespace System;
 	using namespace System::IO;	

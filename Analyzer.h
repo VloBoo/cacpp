@@ -4,9 +4,23 @@ namespace CACPP {
 	using namespace System::Collections::Generic;
 	using namespace System::Text::RegularExpressions;
 
-	ref struct Obj {
-		String^ name;
+	ref class Ctring : IComparable {
+	private:
+		String^ str;
 		int index;
+	public:
+		int virtual CompareTo(Object^ obj) {
+			String^ str1 = ((Ctring^)obj)->Text;
+			return String::Compare(this->str, str1);
+		}
+		property String^ Text {
+			String^ get() { return this->str; }
+			void set(String^ value) { this->str = value; }
+		}
+		property int Index {
+			int get() { return this->index; }
+			void set(int value) { this->index = value; }
+		}
 	};
 
 	List<String^>^ initKeyword() {
@@ -105,5 +119,5 @@ namespace CACPP {
 		buf->Add("xor_eq");
 		return buf;
 	}
-	
+
 }

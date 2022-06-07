@@ -19,17 +19,17 @@ namespace CACPP {
 	using namespace System::Drawing;
 	public delegate void ReturnFun(bool);
 	/// <summary>
-	/// Сводка для MainWindow
+	///            MainWindow
 	/// </summary>
 
 	public ref class MainWindow : public System::Windows::Forms::Form
 	{
 		ref struct GenSize {
-			int WinH; //ширина и высота окна
-			int	WinW;
-			int TextH; //ширина и высота окна
-			int	TextW;
-			int PanelH; //Расположение панели
+			int WinH; //                    
+			int WinW;
+			int TextH; //                    
+			int TextW;
+			int PanelH; //                   
 			int PanelWPoint;
 			int PanelListH;
 		};
@@ -46,7 +46,7 @@ namespace CACPP {
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		///                                    .
 		/// </summary>
 		~MainWindow()
 		{
@@ -60,9 +60,9 @@ namespace CACPP {
 	private: System::Windows::Forms::ToolStripMenuItem^ fileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ settingToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ langToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ russianРусскийToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ russianToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ englishEnglishToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ belarussianБеларускіToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ belarussianToolStripMenuItem;
 
 
 	private: System::Windows::Forms::StatusStrip^ statusStrip1;
@@ -96,7 +96,7 @@ namespace CACPP {
 	private: ReturnFun^ rf;
 	private: FileCPP^ filecpp;
 	private: GenSize^ size;
-	private: List<Obj^>^ funs;
+	private: List<Ctring^>^ funs;
 	private: System::Drawing::Color color1;
 	private: System::Drawing::Color color2;
 	private: System::Drawing::Color color3;
@@ -129,6 +129,8 @@ namespace CACPP {
 	private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator4;
 	private: System::Windows::Forms::ToolStripMenuItem^ analyzeToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripStatusLabel^ toolStripStatusLabel2;
+private: System::Windows::Forms::Label^ TL1;
+private: System::Windows::Forms::Label^ TL2;
 
 
 
@@ -146,14 +148,14 @@ namespace CACPP {
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 		   /// <summary>
-		   /// Обязательная переменная конструктора.
+		   ///                                     .
 		   /// </summary>
 
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		///                                                           
+		///                                                 .
 		/// </summary>
 		   void InitializeComponent(void)
 		   {
@@ -177,9 +179,9 @@ namespace CACPP {
 			   this->skyblueToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->fontToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->langToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			   this->russianРусскийToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			   this->russianToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->englishEnglishToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			   this->belarussianБеларускіToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			   this->belarussianToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->toolStripSeparator2 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			   this->debugToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->sizeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -204,6 +206,8 @@ namespace CACPP {
 			   this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			   this->fontDialog1 = (gcnew System::Windows::Forms::FontDialog());
 			   this->helpProvider1 = (gcnew System::Windows::Forms::HelpProvider());
+			   this->TL1 = (gcnew System::Windows::Forms::Label());
+			   this->TL2 = (gcnew System::Windows::Forms::Label());
 			   this->menuStrip1->SuspendLayout();
 			   this->statusStrip1->SuspendLayout();
 			   this->tabControl1->SuspendLayout();
@@ -335,17 +339,17 @@ namespace CACPP {
 			   // langToolStripMenuItem
 			   // 
 			   this->langToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				   this->russianРусскийToolStripMenuItem,
-					   this->englishEnglishToolStripMenuItem, this->belarussianБеларускіToolStripMenuItem
+				   this->russianToolStripMenuItem,
+					   this->englishEnglishToolStripMenuItem, this->belarussianToolStripMenuItem
 			   });
 			   resources->ApplyResources(this->langToolStripMenuItem, L"langToolStripMenuItem");
 			   this->langToolStripMenuItem->Name = L"langToolStripMenuItem";
 			   // 
-			   // russianРусскийToolStripMenuItem
+			   // russianToolStripMenuItem
 			   // 
-			   this->russianРусскийToolStripMenuItem->Name = L"russianРусскийToolStripMenuItem";
-			   resources->ApplyResources(this->russianРусскийToolStripMenuItem, L"russianРусскийToolStripMenuItem");
-			   this->russianРусскийToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::menuLanguageRu);
+			   this->russianToolStripMenuItem->Name = L"russianToolStripMenuItem";
+			   resources->ApplyResources(this->russianToolStripMenuItem, L"russianToolStripMenuItem");
+			   this->russianToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::menuLanguageRu);
 			   // 
 			   // englishEnglishToolStripMenuItem
 			   // 
@@ -353,11 +357,11 @@ namespace CACPP {
 			   resources->ApplyResources(this->englishEnglishToolStripMenuItem, L"englishEnglishToolStripMenuItem");
 			   this->englishEnglishToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::menuLanguageEn);
 			   // 
-			   // belarussianБеларускіToolStripMenuItem
+			   // belarussianToolStripMenuItem
 			   // 
-			   this->belarussianБеларускіToolStripMenuItem->Name = L"belarussianБеларускіToolStripMenuItem";
-			   resources->ApplyResources(this->belarussianБеларускіToolStripMenuItem, L"belarussianБеларускіToolStripMenuItem");
-			   this->belarussianБеларускіToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::menuLanguageBe);
+			   this->belarussianToolStripMenuItem->Name = L"belarussianToolStripMenuItem";
+			   resources->ApplyResources(this->belarussianToolStripMenuItem, L"belarussianToolStripMenuItem");
+			   this->belarussianToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::menuLanguageBe);
 			   // 
 			   // toolStripSeparator2
 			   // 
@@ -517,10 +521,24 @@ namespace CACPP {
 			   // 
 			   resources->ApplyResources(this->helpProvider1, L"helpProvider1");
 			   // 
+			   // TL1
+			   // 
+			   resources->ApplyResources(this->TL1, L"TL1");
+			   this->TL1->Name = L"TL1";
+			   this->helpProvider1->SetShowHelp(this->TL1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"TL1.ShowHelp"))));
+			   // 
+			   // TL2
+			   // 
+			   resources->ApplyResources(this->TL2, L"TL2");
+			   this->TL2->Name = L"TL2";
+			   this->helpProvider1->SetShowHelp(this->TL2, (cli::safe_cast<System::Boolean>(resources->GetObject(L"TL2.ShowHelp"))));
+			   // 
 			   // MainWindow
 			   // 
 			   resources->ApplyResources(this, L"$this");
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			   this->Controls->Add(this->TL2);
+			   this->Controls->Add(this->TL1);
 			   this->Controls->Add(this->richTextBox1);
 			   this->Controls->Add(this->label1);
 			   this->Controls->Add(this->tabControl1);
@@ -530,7 +548,6 @@ namespace CACPP {
 			   this->MainMenuStrip = this->menuStrip1;
 			   this->Name = L"MainWindow";
 			   this->helpProvider1->SetShowHelp(this, (cli::safe_cast<System::Boolean>(resources->GetObject(L"$this.ShowHelp"))));
-			   this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MainWindow::winClosing);
 			   this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &MainWindow::winClosed);
 			   this->Load += gcnew System::EventHandler(this, &MainWindow::winLoad);
 			   this->SizeChanged += gcnew System::EventHandler(this, &MainWindow::winResize);
@@ -576,6 +593,7 @@ namespace CACPP {
 		this->textChangedEnable = true;
 	}
 	private: System::Void winLoad(System::Object^ sender, System::EventArgs^ e) {
+		this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MainWindow::winClosing);
 		if (!this->admin) {
 			this->debugToolStripMenuItem->Enabled = false;
 			this->debugToolStripMenuItem->Visible = false;
@@ -619,10 +637,13 @@ namespace CACPP {
 				this->filecpp->Status = true;
 				this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
 			}
-			int buf = this->richTextBox1->SelectionStart;
-			this->richTextBox1->SelectAll();
-			this->richTextBox1->SelectionColor = System::Drawing::SystemColors::WindowText;
-			this->richTextBox1->SelectionStart = buf;
+			if (this->colorOn) {
+				int buf = this->richTextBox1->SelectionStart;
+				this->richTextBox1->SelectAll();
+				this->richTextBox1->SelectionColor = System::Drawing::SystemColors::WindowText;
+				this->richTextBox1->Select(buf, 0);
+				this->colorOn = false;
+			}
 			this->listBox1->ForeColor = System::Drawing::SystemColors::ScrollBar;
 			this->listBox2->ForeColor = System::Drawing::SystemColors::ScrollBar;
 			this->listBox3->ForeColor = System::Drawing::SystemColors::ScrollBar;
@@ -652,7 +673,7 @@ namespace CACPP {
 	private: bool open() {
 		if (this->filecpp->Status) {
 			System::Windows::Forms::DialogResult^ dr;
-			dr = MessageBox::Show("Сохранить файл?", "Файл не сохранен!", MessageBoxButtons::YesNoCancel);
+			dr = MessageBox::Show(this->TL2->Text, this->TL1->Text, MessageBoxButtons::YesNoCancel);
 			if (dr->Equals(System::Windows::Forms::DialogResult::Yes)) {
 				save(false);
 				return true;
@@ -802,10 +823,11 @@ namespace CACPP {
 	private: System::Void menuAuthor(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Application: CACPP 0.4.0.0\nMade by Uladzislau \"VloBo\" Charniakou (C) 2022\nCurseWork on OAIP (KBP)\nMore: https://github.com/VloBoo/cacpp", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information, MessageBoxDefaultButton::Button1);
 	}
+	private: bool colorOn = false;
 	private: System::Void menuAnalyzer(System::Object^ sender, System::EventArgs^ e) {
 		this->textChangedEnable = false;
-
-		this->funs = gcnew List<Obj^>();
+		int bufIndex = this->richTextBox1->SelectionStart;
+		this->funs = gcnew List<Ctring^>();
 
 		this->richTextBox1->SelectAll();
 		this->richTextBox1->SelectionColor = System::Drawing::SystemColors::WindowText;
@@ -814,18 +836,18 @@ namespace CACPP {
 		this->listBox3->Items->Clear();
 
 		//=================Функции=================
-		Regex^ reg = gcnew Regex("(([a-zA-Z]+)[\\r\\n ]*\\([^)]*\\))[\\r\\n ]*\\{[^}]*\\}");
+		Regex^ reg = gcnew Regex("[\\r\\n\\t :;]*((~?[_a-zA-Z][_0-9a-zA-Z]+)[\\r\\n\\t ]*\\([^)]*\\))[\\r\\n\\t ]*\\{[^}]*\\}");
 		for each (Match ^ match in reg->Matches(this->richTextBox1->Text)) {
-			if (match->Groups[1]->Value != "each" &&
-				match->Groups[1]->Value != "while" &&
-				match->Groups[1]->Value != "catch" &&
-				match->Groups[1]->Value != "for") {
-				Obj^ buf = gcnew Obj();
-				buf->name = match->Groups[1]->Value;
-				buf->index = match->Groups[2]->Index;
+			if (match->Groups[2]->Value != "each" &&
+				match->Groups[2]->Value != "while" &&
+				match->Groups[2]->Value != "catch" &&
+				match->Groups[2]->Value != "if" &&
+				match->Groups[2]->Value != "for") {
+				Ctring^ buf = gcnew Ctring();
+				buf->Text = match->Groups[1]->Value;
+				buf->Index = match->Groups[2]->Index;
 				this->funs->Add(buf);
 
-				//Красим текст
 				this->richTextBox1->Select(match->Groups[2]->Index, match->Groups[2]->Length);
 				this->richTextBox1->SelectionColor = System::Drawing::Color::FromArgb(
 					static_cast<System::Int32>(static_cast<System::Byte>(255)), //r
@@ -833,21 +855,15 @@ namespace CACPP {
 					static_cast<System::Int32>(static_cast<System::Byte>(0)));//b
 			}
 		}
-		//Нужно отсортировать
-		for each (Obj ^ a in this->funs) {
-			this->listBox2->Items->Add(a->name);
-
+		this->funs->Sort();
+		for each (Ctring ^ a in this->funs) {
+			this->listBox2->Items->Add(a->Text);
 		}
 
 		//=================Переменные=================
-		reg = gcnew Regex("\\b((int|char|long|bool|wchar_t|char16_t|char32_t|short|float|double|void)[\\r\\n ]*[*|\\^]*[\\r\\n ]*([a-zA-Z])+)[\\r\\n ]*=");
+		reg = gcnew Regex("\\b((int|char|long|bool|wchar_t|char16_t|char32_t|short|float|double|void)[\\r\\n\\t ]*[*|\\^]*[\\r\\n\\t ]*[_a-zA-Z][_0-9a-zA-Z]+)[\\r\\n\\t ]*=");
 		for each (Match ^ match in reg->Matches(this->richTextBox1->Text)) {
-			Obj^ buf = gcnew Obj();
-			buf->name = match->Value;
-			buf->index = match->Groups[1]->Index;
 			this->listBox3->Items->Add(match->Groups[1]->Value);
-
-			//Красим текст
 			this->richTextBox1->Select(match->Groups[1]->Index, match->Groups[1]->Length);
 			this->richTextBox1->SelectionColor = System::Drawing::Color::FromArgb(
 				static_cast<System::Int32>(static_cast<System::Byte>(255)), //r
@@ -855,7 +871,7 @@ namespace CACPP {
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));//b
 		}
 
-		//=================КлючСлов=================
+		//=================КлючСлова=================
 		for each (String ^ keyWord in initKeyword()) {
 			reg = gcnew Regex("\\b" + keyWord + "\\b");
 			int buf = 0;
@@ -879,13 +895,15 @@ namespace CACPP {
 		this->listBox2->Enabled = true;
 		this->listBox3->Enabled = true;
 
+		this->richTextBox1->Select(bufIndex,0);
+		this->colorOn = true;
 		this->textChangedEnable = true;
 	}
 	private: System::Void pickList2(System::Object^ sender, System::EventArgs^ e) {
-		for each (Obj ^ a in this->funs) {
-			if (this->listBox2->Items[this->listBox2->SelectedIndex]->ToString() == a->name) {
+		for each (Ctring ^ a in this->funs) {
+			if (this->listBox2->Items[this->listBox2->SelectedIndex]->ToString() == a->Text) {
 				this->richTextBox1->Focus();
-				this->richTextBox1->SelectionStart = a->index;
+				this->richTextBox1->SelectionStart = a->Index;
 			}
 		}
 	}

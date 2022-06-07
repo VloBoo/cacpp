@@ -67,6 +67,11 @@ namespace CACPP {
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
 	private: System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
 	private: System::Windows::Forms::HelpProvider^ helpProvider1;
+	private: System::Windows::Forms::Label^ TL5;
+	private: System::Windows::Forms::Label^ TL4;
+	private: System::Windows::Forms::Label^ TL3;
+	private: System::Windows::Forms::Label^ TL2;
+	private: System::Windows::Forms::Label^ TL1;
 
 
 
@@ -86,6 +91,11 @@ namespace CACPP {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(RegistrationWindow::typeid));
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->TL5 = (gcnew System::Windows::Forms::Label());
+			this->TL4 = (gcnew System::Windows::Forms::Label());
+			this->TL3 = (gcnew System::Windows::Forms::Label());
+			this->TL2 = (gcnew System::Windows::Forms::Label());
+			this->TL1 = (gcnew System::Windows::Forms::Label());
 			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -120,9 +130,15 @@ namespace CACPP {
 			resources->ApplyResources(this->tabControl1, L"tabControl1");
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
+			this->helpProvider1->SetShowHelp(this->tabControl1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"tabControl1.ShowHelp"))));
 			// 
 			// tabPage1
 			// 
+			this->tabPage1->Controls->Add(this->TL5);
+			this->tabPage1->Controls->Add(this->TL4);
+			this->tabPage1->Controls->Add(this->TL3);
+			this->tabPage1->Controls->Add(this->TL2);
+			this->tabPage1->Controls->Add(this->TL1);
 			this->tabPage1->Controls->Add(this->checkBox1);
 			this->tabPage1->Controls->Add(this->label3);
 			this->tabPage1->Controls->Add(this->label2);
@@ -132,43 +148,81 @@ namespace CACPP {
 			this->tabPage1->Controls->Add(this->button1);
 			resources->ApplyResources(this->tabPage1, L"tabPage1");
 			this->tabPage1->Name = L"tabPage1";
+			this->helpProvider1->SetShowHelp(this->tabPage1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"tabPage1.ShowHelp"))));
 			this->tabPage1->UseVisualStyleBackColor = true;
+			// 
+			// TL5
+			// 
+			resources->ApplyResources(this->TL5, L"TL5");
+			this->TL5->Name = L"TL5";
+			this->helpProvider1->SetShowHelp(this->TL5, (cli::safe_cast<System::Boolean>(resources->GetObject(L"TL5.ShowHelp"))));
+			// 
+			// TL4
+			// 
+			resources->ApplyResources(this->TL4, L"TL4");
+			this->TL4->Name = L"TL4";
+			this->helpProvider1->SetShowHelp(this->TL4, (cli::safe_cast<System::Boolean>(resources->GetObject(L"TL4.ShowHelp"))));
+			// 
+			// TL3
+			// 
+			resources->ApplyResources(this->TL3, L"TL3");
+			this->TL3->Name = L"TL3";
+			this->helpProvider1->SetShowHelp(this->TL3, (cli::safe_cast<System::Boolean>(resources->GetObject(L"TL3.ShowHelp"))));
+			// 
+			// TL2
+			// 
+			resources->ApplyResources(this->TL2, L"TL2");
+			this->TL2->Name = L"TL2";
+			this->helpProvider1->SetShowHelp(this->TL2, (cli::safe_cast<System::Boolean>(resources->GetObject(L"TL2.ShowHelp"))));
+			// 
+			// TL1
+			// 
+			resources->ApplyResources(this->TL1, L"TL1");
+			this->TL1->Name = L"TL1";
+			this->helpProvider1->SetShowHelp(this->TL1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"TL1.ShowHelp"))));
 			// 
 			// checkBox1
 			// 
 			resources->ApplyResources(this->checkBox1, L"checkBox1");
 			this->checkBox1->Name = L"checkBox1";
+			this->helpProvider1->SetShowHelp(this->checkBox1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"checkBox1.ShowHelp"))));
 			this->checkBox1->UseVisualStyleBackColor = true;
 			// 
 			// label3
 			// 
 			resources->ApplyResources(this->label3, L"label3");
 			this->label3->Name = L"label3";
+			this->helpProvider1->SetShowHelp(this->label3, (cli::safe_cast<System::Boolean>(resources->GetObject(L"label3.ShowHelp"))));
 			// 
 			// label2
 			// 
 			resources->ApplyResources(this->label2, L"label2");
 			this->label2->Name = L"label2";
+			this->helpProvider1->SetShowHelp(this->label2, (cli::safe_cast<System::Boolean>(resources->GetObject(L"label2.ShowHelp"))));
 			// 
 			// label1
 			// 
 			resources->ApplyResources(this->label1, L"label1");
 			this->label1->Name = L"label1";
+			this->helpProvider1->SetShowHelp(this->label1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"label1.ShowHelp"))));
 			// 
 			// textBox2
 			// 
 			resources->ApplyResources(this->textBox2, L"textBox2");
 			this->textBox2->Name = L"textBox2";
+			this->helpProvider1->SetShowHelp(this->textBox2, (cli::safe_cast<System::Boolean>(resources->GetObject(L"textBox2.ShowHelp"))));
 			// 
 			// textBox1
 			// 
 			resources->ApplyResources(this->textBox1, L"textBox1");
 			this->textBox1->Name = L"textBox1";
+			this->helpProvider1->SetShowHelp(this->textBox1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"textBox1.ShowHelp"))));
 			// 
 			// button1
 			// 
 			resources->ApplyResources(this->button1, L"button1");
 			this->button1->Name = L"button1";
+			this->helpProvider1->SetShowHelp(this->button1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"button1.ShowHelp"))));
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &RegistrationWindow::button1Click);
 			// 
@@ -185,6 +239,7 @@ namespace CACPP {
 			this->tabPage2->Controls->Add(this->label4);
 			resources->ApplyResources(this->tabPage2, L"tabPage2");
 			this->tabPage2->Name = L"tabPage2";
+			this->helpProvider1->SetShowHelp(this->tabPage2, (cli::safe_cast<System::Boolean>(resources->GetObject(L"tabPage2.ShowHelp"))));
 			this->tabPage2->UseVisualStyleBackColor = true;
 			// 
 			// label8
@@ -192,26 +247,31 @@ namespace CACPP {
 			resources->ApplyResources(this->label8, L"label8");
 			this->label8->ForeColor = System::Drawing::SystemColors::ControlDarkDark;
 			this->label8->Name = L"label8";
+			this->helpProvider1->SetShowHelp(this->label8, (cli::safe_cast<System::Boolean>(resources->GetObject(L"label8.ShowHelp"))));
 			// 
 			// label7
 			// 
 			resources->ApplyResources(this->label7, L"label7");
 			this->label7->Name = L"label7";
+			this->helpProvider1->SetShowHelp(this->label7, (cli::safe_cast<System::Boolean>(resources->GetObject(L"label7.ShowHelp"))));
 			// 
 			// label6
 			// 
 			resources->ApplyResources(this->label6, L"label6");
 			this->label6->Name = L"label6";
+			this->helpProvider1->SetShowHelp(this->label6, (cli::safe_cast<System::Boolean>(resources->GetObject(L"label6.ShowHelp"))));
 			// 
 			// label5
 			// 
 			resources->ApplyResources(this->label5, L"label5");
 			this->label5->Name = L"label5";
+			this->helpProvider1->SetShowHelp(this->label5, (cli::safe_cast<System::Boolean>(resources->GetObject(L"label5.ShowHelp"))));
 			// 
 			// button2
 			// 
 			resources->ApplyResources(this->button2, L"button2");
 			this->button2->Name = L"button2";
+			this->helpProvider1->SetShowHelp(this->button2, (cli::safe_cast<System::Boolean>(resources->GetObject(L"button2.ShowHelp"))));
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &RegistrationWindow::button2Click);
 			// 
@@ -219,21 +279,25 @@ namespace CACPP {
 			// 
 			resources->ApplyResources(this->textBox5, L"textBox5");
 			this->textBox5->Name = L"textBox5";
+			this->helpProvider1->SetShowHelp(this->textBox5, (cli::safe_cast<System::Boolean>(resources->GetObject(L"textBox5.ShowHelp"))));
 			// 
 			// textBox4
 			// 
 			resources->ApplyResources(this->textBox4, L"textBox4");
 			this->textBox4->Name = L"textBox4";
+			this->helpProvider1->SetShowHelp(this->textBox4, (cli::safe_cast<System::Boolean>(resources->GetObject(L"textBox4.ShowHelp"))));
 			// 
 			// textBox3
 			// 
 			resources->ApplyResources(this->textBox3, L"textBox3");
 			this->textBox3->Name = L"textBox3";
+			this->helpProvider1->SetShowHelp(this->textBox3, (cli::safe_cast<System::Boolean>(resources->GetObject(L"textBox3.ShowHelp"))));
 			// 
 			// label4
 			// 
 			resources->ApplyResources(this->label4, L"label4");
 			this->label4->Name = L"label4";
+			this->helpProvider1->SetShowHelp(this->label4, (cli::safe_cast<System::Boolean>(resources->GetObject(L"label4.ShowHelp"))));
 			// 
 			// comboBox1
 			// 
@@ -244,6 +308,7 @@ namespace CACPP {
 			});
 			resources->ApplyResources(this->comboBox1, L"comboBox1");
 			this->comboBox1->Name = L"comboBox1";
+			this->helpProvider1->SetShowHelp(this->comboBox1, (cli::safe_cast<System::Boolean>(resources->GetObject(L"comboBox1.ShowHelp"))));
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &RegistrationWindow::selected);
 			// 
 			// openFileDialog1
@@ -267,6 +332,7 @@ namespace CACPP {
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"RegistrationWindow";
+			this->helpProvider1->SetShowHelp(this, (cli::safe_cast<System::Boolean>(resources->GetObject(L"$this.ShowHelp"))));
 			this->ShowIcon = false;
 			this->Load += gcnew System::EventHandler(this, &RegistrationWindow::regwinLoad);
 			this->tabControl1->ResumeLayout(false);
@@ -293,7 +359,7 @@ namespace CACPP {
 			}
 			else {
 				if (!r->login(this->textBox2->Text, this->textBox1->Text, 0, this->checkBox1->Checked)) {
-					MessageBox::Show("Перепроверьте логин или пороль");
+					MessageBox::Show(this->TL1->Text);
 					return;
 				}
 			}
@@ -304,7 +370,7 @@ namespace CACPP {
 			mainWindow->Show();
 		}
 		else {
-			MessageBox::Show("Логин и пороль должны быть не менее 4 символов и не более 20");
+			MessageBox::Show(this->TL2->Text);
 		}
 	}
 	private: System::Void button2Click(System::Object^ sender, System::EventArgs^ e) {
@@ -313,33 +379,33 @@ namespace CACPP {
 			(this->textBox4->Text->Length <= 20 && this->textBox4->Text->Length > 3) ||
 			(this->textBox5->Text->Length <= 20 && this->textBox5->Text->Length > 3)) {
 			Registration^ r = gcnew Registration();
-			if (this->textBox5->Text == "AdMiN") {
+			if (this->textBox5->Text == "    ") {
 				if (r->addUser(this->textBox3->Text, this->textBox4->Text, 1)) {
-					MessageBox::Show("Вы успешно зарегистрировались");
+					MessageBox::Show(this->TL3->Text);
 					regok = true;
 				}
 				else {
-					MessageBox::Show("Пользователь с таким логином уже существует");
+					MessageBox::Show(this->TL4->Text);
 				}
 			}
 			else {
 				if (this->textBox4->Text == this->textBox5->Text) {
 					if (r->addUser(this->textBox3->Text, this->textBox4->Text, 0)) {
-						MessageBox::Show("Вы успешно зарегистрировались");
+						MessageBox::Show(this->TL3->Text);
 						regok = true;
 					}
 					else {
-						MessageBox::Show("Пользователь с таким именим уже существует");
+						MessageBox::Show(this->TL4->Text);
 					}
 				}
 				else {
-					MessageBox::Show("Повторный пороль не сопадает");
+					MessageBox::Show(this->TL5->Text);
 				}
 			}
 			r->save();
 		}
 		else {
-			MessageBox::Show("Логин и пороль должны быть не менее 4 символов и не более 20");
+			MessageBox::Show(this->TL1->Text);
 		}
 		if (regok) {
 			this->textBox3->Text = "";
@@ -379,6 +445,7 @@ namespace CACPP {
 		String^ byf4 = this->textBox4->Text;
 		String^ byf5 = this->textBox5->Text;
 		bool byf6 = this->checkBox1->Checked;
+		int buf7 = this->tabControl1->SelectedIndex;
 		this->Controls->Clear();
 		InitializeComponent();
 		this->textBox1->Text = byf;
@@ -387,6 +454,7 @@ namespace CACPP {
 		this->textBox4->Text = byf4;
 		this->textBox5->Text = byf5;
 		this->checkBox1->Checked = byf6;
+		this->tabControl1->SelectedIndex = buf7;
 		
 	}
 	};
