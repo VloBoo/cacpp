@@ -121,8 +121,8 @@ namespace CACPP {
 	private: System::Windows::Forms::FontDialog^ fontDialog1;
 	private: System::Windows::Forms::ToolStripMenuItem^ setToolStripMenuItem;
 	private: System::Windows::Forms::ListBox^ listBox1;
-	private: System::Windows::Forms::ToolStripMenuItem^ showHelpToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ authorToolStripMenuItem;
+
+
 	private: System::Windows::Forms::ListBox^ listBox2;
 	private: System::Windows::Forms::ListBox^ listBox3;
 	private: System::Windows::Forms::HelpProvider^ helpProvider1;
@@ -131,6 +131,7 @@ namespace CACPP {
 	private: System::Windows::Forms::ToolStripStatusLabel^ toolStripStatusLabel2;
 private: System::Windows::Forms::Label^ TL1;
 private: System::Windows::Forms::Label^ TL2;
+private: System::Windows::Forms::Label^ TL3;
 
 
 
@@ -188,8 +189,6 @@ private: System::Windows::Forms::Label^ TL2;
 			   this->locationToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->setToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->helpToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			   this->showHelpToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			   this->authorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
 			   this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			   this->toolStripStatusLabel2 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
@@ -208,6 +207,7 @@ private: System::Windows::Forms::Label^ TL2;
 			   this->helpProvider1 = (gcnew System::Windows::Forms::HelpProvider());
 			   this->TL1 = (gcnew System::Windows::Forms::Label());
 			   this->TL2 = (gcnew System::Windows::Forms::Label());
+			   this->TL3 = (gcnew System::Windows::Forms::Label());
 			   this->menuStrip1->SuspendLayout();
 			   this->statusStrip1->SuspendLayout();
 			   this->tabControl1->SuspendLayout();
@@ -397,24 +397,9 @@ private: System::Windows::Forms::Label^ TL2;
 			   // 
 			   // helpToolStripMenuItem
 			   // 
-			   this->helpToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				   this->showHelpToolStripMenuItem,
-					   this->authorToolStripMenuItem
-			   });
 			   this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
 			   resources->ApplyResources(this->helpToolStripMenuItem, L"helpToolStripMenuItem");
-			   // 
-			   // showHelpToolStripMenuItem
-			   // 
-			   resources->ApplyResources(this->showHelpToolStripMenuItem, L"showHelpToolStripMenuItem");
-			   this->showHelpToolStripMenuItem->Name = L"showHelpToolStripMenuItem";
-			   this->showHelpToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::showHelp);
-			   // 
-			   // authorToolStripMenuItem
-			   // 
-			   this->authorToolStripMenuItem->Name = L"authorToolStripMenuItem";
-			   resources->ApplyResources(this->authorToolStripMenuItem, L"authorToolStripMenuItem");
-			   this->authorToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::menuAuthor);
+			   this->helpToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::help);
 			   // 
 			   // statusStrip1
 			   // 
@@ -533,10 +518,17 @@ private: System::Windows::Forms::Label^ TL2;
 			   this->TL2->Name = L"TL2";
 			   this->helpProvider1->SetShowHelp(this->TL2, (cli::safe_cast<System::Boolean>(resources->GetObject(L"TL2.ShowHelp"))));
 			   // 
+			   // TL3
+			   // 
+			   resources->ApplyResources(this->TL3, L"TL3");
+			   this->TL3->Name = L"TL3";
+			   this->helpProvider1->SetShowHelp(this->TL3, (cli::safe_cast<System::Boolean>(resources->GetObject(L"TL3.ShowHelp"))));
+			   // 
 			   // MainWindow
 			   // 
 			   resources->ApplyResources(this, L"$this");
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			   this->Controls->Add(this->TL3);
 			   this->Controls->Add(this->TL2);
 			   this->Controls->Add(this->TL1);
 			   this->Controls->Add(this->richTextBox1);
@@ -815,14 +807,6 @@ private: System::Windows::Forms::Label^ TL2;
 		this->Width = 360;
 		this->Height = 480;
 	}
-	private: System::Void showHelp(System::Object^ sender, System::EventArgs^ e) {
-		this->richTextBox1->Focus();
-		this->helpProvider1->SetShowHelp(this, true);
-		this->helpProvider1->HelpNamespace = "https://github.com/VloBoo/cacpp";
-	}
-	private: System::Void menuAuthor(System::Object^ sender, System::EventArgs^ e) {
-		MessageBox::Show("Application: CACPP 0.4.0.0\nMade by Uladzislau \"VloBo\" Charniakou (C) 2022\nCurseWork on OAIP (KBP)\nMore: https://github.com/VloBoo/cacpp", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information, MessageBoxDefaultButton::Button1);
-	}
 	private: bool colorOn = false;
 	private: System::Void menuAnalyzer(System::Object^ sender, System::EventArgs^ e) {
 		this->textChangedEnable = false;
@@ -835,7 +819,7 @@ private: System::Windows::Forms::Label^ TL2;
 		this->listBox2->Items->Clear();
 		this->listBox3->Items->Clear();
 
-		//=================Функции=================
+		//=================       =================
 		Regex^ reg = gcnew Regex("[\\r\\n\\t :;]*((~?[_a-zA-Z][_0-9a-zA-Z]+)[\\r\\n\\t ]*\\([^)]*\\))[\\r\\n\\t ]*\\{[^}]*\\}");
 		for each (Match ^ match in reg->Matches(this->richTextBox1->Text)) {
 			if (match->Groups[2]->Value != "each" &&
@@ -860,7 +844,7 @@ private: System::Windows::Forms::Label^ TL2;
 			this->listBox2->Items->Add(a->Text);
 		}
 
-		//=================Переменные=================
+		//=================          =================
 		reg = gcnew Regex("\\b((int|char|long|bool|wchar_t|char16_t|char32_t|short|float|double|void)[\\r\\n\\t ]*[*|\\^]*[\\r\\n\\t ]*[_a-zA-Z][_0-9a-zA-Z]+)[\\r\\n\\t ]*=");
 		for each (Match ^ match in reg->Matches(this->richTextBox1->Text)) {
 			this->listBox3->Items->Add(match->Groups[1]->Value);
@@ -871,7 +855,7 @@ private: System::Windows::Forms::Label^ TL2;
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));//b
 		}
 
-		//=================КлючСлова=================
+		//=================         =================
 		for each (String ^ keyWord in initKeyword()) {
 			reg = gcnew Regex("\\b" + keyWord + "\\b");
 			int buf = 0;
@@ -911,5 +895,8 @@ private: System::Windows::Forms::Label^ TL2;
 	private: System::Void selectionChanged(System::Object^ sender, System::EventArgs^ e) {
 		this->toolStripStatusLabel2->Text = "|   " + this->richTextBox1->SelectionStart.ToString();
 	}
-	};
+	private: System::Void help(System::Object^ sender, System::EventArgs^ e) {
+		MessageBox::Show(this->TL3->Text, "", MessageBoxButtons::OK, MessageBoxIcon::Information, MessageBoxDefaultButton::Button1);
+	}
+};
 }

@@ -328,7 +328,6 @@ namespace CACPP {
 			this->Controls->Add(this->tabControl1);
 			this->Cursor = System::Windows::Forms::Cursors::Default;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
-			this->HelpButton = true;
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"RegistrationWindow";

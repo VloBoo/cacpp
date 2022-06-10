@@ -132,7 +132,7 @@
     <value>462, 17</value>
   </metadata>
   <data name="helpProvider1.HelpNamespace" xml:space="preserve">
-    <value>https://github.com/VloBoo/cacpp</value>
+    <value>.\help.chm</value>
   </data>
   <data name="TL5.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
