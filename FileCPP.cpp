@@ -9,12 +9,16 @@ namespace CACPP {
 				StreamReader^ sr = gcnew StreamReader(this->path);
 				String^ line = sr->ReadLine();
 				while (line != nullptr) {
-					this->text += (line+"\r\n");
+					this->text += (line + "\r\n");
 					line = sr->ReadLine();
 				}
 				sr->Close();
 			}
 			catch (FileNotFoundException^ e) {
+				
+			}
+			catch (UnauthorizedAccessException^ e) {
+				System::Windows::Forms::MessageBox::Show("Access denied, you must have administrator rights.");
 			}
 		}
 	}
@@ -22,8 +26,16 @@ namespace CACPP {
 		if (this->path == "New") {
 			return;
 		}
-		StreamWriter^ sw = gcnew StreamWriter(this->path);
-		sw->Write(this->text);
-		sw->Close();
+		try {
+			StreamWriter^ sw = gcnew StreamWriter(this->path);
+			sw->Write(this->text);
+			sw->Close();
+		}
+		catch (FileNotFoundException^ e) {
+			
+		}
+		catch (UnauthorizedAccessException^ e) {
+			System::Windows::Forms::MessageBox::Show("Access denied, you must have administrator rights.");
+		}
 	}
 }

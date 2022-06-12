@@ -589,6 +589,10 @@ private: System::Windows::Forms::Label^ TL3;
 		this->listBox2->Text = byf4;
 		this->listBox3->Text = byf5;
 		this->textChangedEnable = true;
+		if (!this->admin) {
+			this->debugToolStripMenuItem->Enabled = false;
+			this->debugToolStripMenuItem->Visible = false;
+		}
 	}
 	private: System::Void winLoad(System::Object^ sender, System::EventArgs^ e) {
 		this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MainWindow::winClosing);

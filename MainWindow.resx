@@ -2624,7 +2624,7 @@
     <value>10</value>
   </data>
   <data name="TL3.Text" xml:space="preserve">
-    <value>Application: CACPP 1.1.1.0
+    <value>Application: CACPP 1.1.2.0
 Made by Charniakou "VloBo" Uladzislau (C) 2022
 CurseWork (KBP)
 For more press F1</value>
@@ -3217,7 +3217,7 @@ For more press F1</value>
     <value>True</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>MainWindow</value>
+    <value>Code Analyzer</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
     <value>fileToolStripMenuItem</value>

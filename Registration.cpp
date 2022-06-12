@@ -2,7 +2,7 @@
 
 namespace CACPP {
 	Registration::Registration() {
-		this->path = ".\\Users.dat";
+		this->path = System::Environment::GetEnvironmentVariable("USERPROFILE")+"\\users.cacpp";
 		this->users = gcnew List<User^>();
 		this->nameL = gcnew String("");
 		this->passL = gcnew String("");
@@ -26,31 +26,36 @@ namespace CACPP {
 			sr->Close();
 		}
 		catch (FileNotFoundException^ e) {
-			//                  
+		}
+		catch (UnauthorizedAccessException^ e) {
+			System::Windows::Forms::MessageBox::Show("Access denied, you must have administrator rights.");
 		}
 	}
 
 	void Registration::save() {
-		StreamWriter^ sw = gcnew StreamWriter(this->path);
-		String^ a = (this->logF) ? "true" : "false";
-		sw->WriteLine(a);
-		if (logF) {
-			sw->WriteLine(this->nameL);
-			sw->WriteLine(this->passL);
+		try {
+			StreamWriter^ sw = gcnew StreamWriter(this->path);
+			String^ a = (this->logF) ? "true" : "false";
+			sw->WriteLine(a);
+			if (logF) {
+				sw->WriteLine(this->nameL);
+				sw->WriteLine(this->passL);
+			}
+			for each (User ^ u in this->users) {
+				sw->WriteLine(u->login);
+				sw->WriteLine(u->hash);
+			}
+			sw->Close();
 		}
-		for each (User ^ u in this->users) {
-			sw->WriteLine(u->login);
-			sw->WriteLine(u->hash);
+		catch (UnauthorizedAccessException^ e) {
+			System::Windows::Forms::MessageBox::Show("Access denied, you must have administrator rights. File not saved");
 		}
-		sw->Close();
 	}
 
 	bool Registration::login(String^ name, String^ password, bool admin, bool loggedin) {
 		for each (User ^ u in this->users) {
 			if (u->login == name) {
-				SHA1^ sha = gcnew SHA1CryptoServiceProvider;
-
-				String^ a = (gcnew String(password->Copy(password) + ((admin) ? ("+") : ("-"))))->GetHashCode().ToString();///                          
+				String^ a = (gcnew String(password->Copy(password) + ((admin) ? ("+") : ("-"))))->GetHashCode().ToString();                 
 				if (u->hash == a) {
 					if (loggedin) {
 						this->logF = true;
