@@ -347,6 +347,10 @@ namespace CACPP {
 	public: void show(bool logout) {
 		logout ? this->Show() : this->Close();
 	}
+	public: void local(int l) {
+		this->comboBox1->SelectedIndex = l;
+		this->selected(nullptr, nullptr);
+	}
 	private: System::Void button1Click(System::Object^ sender, System::EventArgs^ e) {
 		if ((this->textBox1->Text->Length <= MAX_SIZE_REG && this->textBox1->Text->Length > 3) ||
 			(this->textBox2->Text->Length <= MAX_SIZE_REG && this->textBox2->Text->Length > 3)) {
@@ -365,9 +369,11 @@ namespace CACPP {
 			r->save();
 			this->Hide();
 			MainWindow^ mainWindow = gcnew MainWindow(admin,
-				gcnew ReturnFun(this, &RegistrationWindow::show));
+				gcnew ReturnFun(this, &RegistrationWindow::show),
+				gcnew LocalFun(this, &RegistrationWindow::local));
 			mainWindow->Show();
 		}
+		
 		else {
 			MessageBox::Show(this->TL2->Text);
 		}

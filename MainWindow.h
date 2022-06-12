@@ -18,6 +18,7 @@ namespace CACPP {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	public delegate void ReturnFun(bool);
+	public delegate void LocalFun(int l);
 	/// <summary>
 	///            MainWindow
 	/// </summary>
@@ -34,9 +35,10 @@ namespace CACPP {
 			int PanelListH;
 		};
 	public:
-		MainWindow(bool admin, ReturnFun^ rf) {
+		MainWindow(bool admin, ReturnFun^ rf, LocalFun^ lf) {
 			InitializeComponent();
 			this->admin = admin;
+			this->lf = lf;
 			this->rf = rf;
 			this->filecpp = gcnew FileCPP("New");
 			this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
@@ -94,6 +96,7 @@ namespace CACPP {
 		   //private: RegestrationWindow^ regWin;
 	private: bool admin;
 	private: ReturnFun^ rf;
+	private: LocalFun^ lf;
 	private: FileCPP^ filecpp;
 	private: GenSize^ size;
 	private: List<Ctring^>^ funs;
@@ -558,12 +561,15 @@ private: System::Windows::Forms::Label^ TL3;
 #pragma endregion
 
 	private: System::Void menuLanguageRu(System::Object^ sender, System::EventArgs^ e) {
+		this->lf(1);
 		update("ru");
 	}
 	private: System::Void menuLanguageEn(System::Object^ sender, System::EventArgs^ e) {
+		this->lf(0);
 		update("en");
 	}
 	private: System::Void menuLanguageBe(System::Object^ sender, System::EventArgs^ e) {
+		this->lf(2);
 		update("be");
 	}
 	private: void update(String^ language) {
@@ -845,7 +851,7 @@ private: System::Windows::Forms::Label^ TL3;
 		}
 
 		//=================          =================
-		reg = gcnew Regex("\\b((int|char|long|bool|wchar_t|char16_t|char32_t|short|float|double|void)[\\r\\n\\t ]*[*|\\^]*[\\r\\n\\t ]*[_a-zA-Z][_0-9a-zA-Z]+)[\\r\\n\\t ]*=");
+		reg = gcnew Regex("\\b((int|char|long|bool|wchar_t|char16_t|char32_t|short|float|double|void)[\\r\\n\\t ]*[*|\\^]*[\\r\\n\\t ]+[_a-zA-Z][_0-9a-zA-Z]*)[\\r\\n\\t ]*=");
 		for each (Match ^ match in reg->Matches(this->richTextBox1->Text)) {
 			this->listBox3->Items->Add(match->Groups[1]->Value);
 			this->richTextBox1->Select(match->Groups[1]->Index, match->Groups[1]->Length);

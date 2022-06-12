@@ -1605,7 +1605,7 @@
   <data name="langToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        yQAAC8kByOiOxAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAHGLSURBVHhe7f0J
+        yAAAC8gBGq9sIAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAHGLSURBVHhe7f0J
         uC1FffZ/b2QGGZRZQUCCiPoXg0LwQc0RRVEIIooTggNoFI0QARFJHFAgxuERfRQER5T4GmeJijGCSBTR
         iBhRjAPREEETFYxDEofk/d7nrM2p3ee3h1Vd3auH+76uz3Ul5aGqu1YPtdfqrpr73//9XzPrOLIpdsY+
         OAhH4Vk4A6/FO/F+XIJP4jO4Cl/Gdfg2vo8f4hb8Er+d0P+tMv1v+jf6t/pv9N+qDtWlOlW32lBbr8Hp
@@ -2152,7 +2152,7 @@
     <value>284, 52</value>
   </data>
   <data name="TL3.Text" xml:space="preserve">
-    <value>Дадатак: CACPP 1.1.0.0
+    <value>Дадатак: CACPP 1.1.1.0
 Зроблена Чарняковым "VloBo" Уладзіславам (C) 2022
 Курсавы праект (КБіП)
 Для большай інфармацыі націсніце F1</value>

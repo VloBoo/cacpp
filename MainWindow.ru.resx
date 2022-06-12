@@ -890,7 +890,7 @@
   <data name="analyzeToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAAGTpJREFUeF7t3euVHLmRBlAZIkdoiAwZE9YBGiJD5MgasttxSGiaJKorKysfEYh7
+        vAAADrwBlbxySQAAGTpJREFUeF7t3euVHLmRBlAZIkdoiAwZE9YBGiJD5MgasttxSGiaJKorKysfEYh7
         z/l+rHY0o2FnAgEgkP0PAAAAAAAAAAAAALjCPz/y7Wf+9ZG/PuX7z/z7Z/7zM//7Kf/3W8Z/Pv7a8d+N
         xN9r/L3jnzUy/vkAwEE+T/BjUh+T+O+Td5aMwmEUCooDAJgYk3yVCf6djOIg/j0VBwC0MSb7MdHPJsmu
         +VwYAEBpY2W/8qr+zERRMHoNACClWN3HRBWrWJP9ORlHCPHnHH/eAHC5mIBs5d8fRwcAnG6c31vh583Y
@@ -1204,7 +1204,7 @@
   <data name="backgroundToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        0QAADdEBwivf4wAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACYJSURBVHhe7d3P
+        0AAADdABEGw9BwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACYJSURBVHhe7d3P
         i+bVlcfxp2lQRgO6cEiGLLIJQQY3iaAuXIS4iJtIQLLpTS/ExeRP0BAwYFwlK6HXLlyIGcRFwF1kVNwO
         omEgOMpAHCZoFsJAOoxmztGnOrc+93Rbt7u+VZ97n/eBl9i3fvTn+d57TmnVU99n97e//W16UbeH+8Lj
         4anwQngtvBXeCR+Ej8PVkB8AACNyduQMyVmSMyVnS86YnDU5c3L25Ay6vZpRgKNy0V3UveFfwsvh/fBZ
@@ -1379,7 +1379,7 @@
   <data name="fontToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADAwSURBVHhe7d1P
+        DAAACwwBP0AiyAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADAwSURBVHhe7d1P
         yG7Xdd/xV65whGKHqiDRYKF6EmwyCJoFJ57IZKQMgv8IDHWNQ8nI0MTGgwwM0bRWR3XIoINi7InAhkDa
         YQkFgwd16s6KKKGuQk1D7E5iUlsujrN+188Vv7u1jqSr9Zx19j7Pd8OH4H2v7n33Onut88u9733fu5/9
         7GdvKda7wm+GL4U/D6+Evw36QbxzPwmvhm+Fr4RPhPdmzwAAVhbrPeHjQbNOM0+zTzNwnIt4OHoX652s
@@ -1615,7 +1615,7 @@
   <data name="langToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        ygAAC8oBZVGvqQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAHGLSURBVHhe7f0J
+        yQAAC8kByOiOxAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAHGLSURBVHhe7f0J
         uC1FffZ/b2QGGZRZQUCCiPoXg0LwQc0RRVEIIooTggNoFI0QARFJHFAgxuERfRQER5T4GmeJijGCSBTR
         iBhRjAPREEETFYxDEofk/d7nrM2p3ee3h1Vd3auH+76uz3Ul5aGqu1YPtdfqrpr73//9XzPrOLIpdsY+
         OAhH4Vk4A6/FO/F+XIJP4jO4Cl/Gdfg2vo8f4hb8Er+d0P+tMv1v+jf6t/pv9N+qDtWlOlW32lBbr8Hp
@@ -2293,7 +2293,7 @@
     <value>275, 52</value>
   </data>
   <data name="TL3.Text" xml:space="preserve">
-    <value>Приложение: CACPP 1.1.0.0
+    <value>Приложение: CACPP 1.1.1.0
 Сделано Черняковым "VloBo" Владиславом (C) 2022
 Курсовой проект (КБиП)
 Для большей информации нажмите F1</value>
