@@ -17,31 +17,31 @@ namespace CACPP {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	public delegate void ReturnFun(bool);
-	public delegate void LocalFun(int l);
+	public delegate void ReturnFun(bool);//делегат открытия окна
+	public delegate void LocalFun(int l);//делегат локали
 	/// <summary>
 	///            MainWindow
 	/// </summary>
 
 	public ref class MainWindow : public System::Windows::Forms::Form
 	{
-		ref struct GenSize {
-			int WinH; //                    
+		ref struct GenSize { //Структура для сохранения начальной позиции элементов
+			int WinH; //окна      
 			int WinW;
-			int TextH; //                    
+			int TextH; //тексбокса                 
 			int TextW;
-			int PanelH; //                   
+			int PanelH; //бовокой панели           
 			int PanelWPoint;
 			int PanelListH;
 		};
 	public:
 		MainWindow(bool admin, ReturnFun^ rf, LocalFun^ lf) {
 			InitializeComponent();
-			this->admin = admin;
-			this->lf = lf;
-			this->rf = rf;
-			this->filecpp = gcnew FileCPP("New");
-			this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
+			this->admin = admin;//сохраняет статус администратора
+			this->lf = lf;//ссылка на делегат для локали
+			this->rf = rf;//ссылка на делегат для открытия окна
+			this->filecpp = gcnew FileCPP("New");//инициализация файла
+			this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");//устанавливаем название 
 			//	this->regWin = regWin;
 		}
 
@@ -396,7 +396,7 @@ private: System::Windows::Forms::Label^ TL3;
 			   // 
 			   this->setToolStripMenuItem->Name = L"setToolStripMenuItem";
 			   resources->ApplyResources(this->setToolStripMenuItem, L"setToolStripMenuItem");
-			   this->setToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::setToolStripMenuItem_Click);
+			   this->setToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::debugResize);
 			   // 
 			   // helpToolStripMenuItem
 			   // 
@@ -559,47 +559,61 @@ private: System::Windows::Forms::Label^ TL3;
 
 		   }
 #pragma endregion
-
-	private: System::Void menuLanguageRu(System::Object^ sender, System::EventArgs^ e) {
+	//Функции нажатия кнопки на смену локализации
+	private: System::Void menuLanguageRu(System::Object^ sender, System::EventArgs^ e) {//русский
 		this->lf(1);
 		update("ru");
 	}
-	private: System::Void menuLanguageEn(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void menuLanguageEn(System::Object^ sender, System::EventArgs^ e) {//английский
 		this->lf(0);
 		update("en");
 	}
-	private: System::Void menuLanguageBe(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void menuLanguageBe(System::Object^ sender, System::EventArgs^ e) {//беларуский
 		this->lf(2);
 		update("be");
 	}
+	//функция смены локализации
 	private: void update(String^ language) {
-		this->textChangedEnable = false;
-		System::Threading::Thread::CurrentThread->CurrentUICulture = gcnew System::Globalization::CultureInfo(language);
+		this->textChangedEnable = false;//отключаем функцию изменения текста
+		System::Threading::Thread::CurrentThread->CurrentUICulture = gcnew System::Globalization::CultureInfo(language);//изменяем локализацию приложения
+		//сохраняем значения, ведь при очисти они пропадут
 		String^ byf = this->richTextBox1->Text;
 		String^ byf2 = this->label1->Text;
 		String^ byf3 = this->listBox1->Text;
 		String^ byf4 = this->listBox2->Text;
 		String^ byf5 = this->listBox3->Text;
-		this->Controls->Clear();
-		InitializeComponent();
-		colorUpdate();
+		int buf6 = this->Height;
+		int buf7 = this->Width;
+
+		this->Controls->Clear();//очищаем элементы
+		InitializeComponent();//заново инициализируем элементы с нужной локализацией
+		//восстанавливаем размер окна
+		this->Height = buf6;
+		this->Width = buf7;
+		winResize(nullptr,nullptr);//обновляем размер элементов
+		colorUpdate();//обновляем цвета
+		//восстанавливаем остальные значения
 		this->richTextBox1->Text = byf;
 		this->label1->Text = byf2;
 		this->listBox1->Text = byf3;
 		this->listBox2->Text = byf4;
 		this->listBox3->Text = byf5;
-		this->textChangedEnable = true;
+		this->textChangedEnable = true;//включаем функцию изменения текста
+		//прячем элементы администратора
 		if (!this->admin) {
 			this->debugToolStripMenuItem->Enabled = false;
 			this->debugToolStripMenuItem->Visible = false;
 		}
 	}
+	//функция загрузки окна
 	private: System::Void winLoad(System::Object^ sender, System::EventArgs^ e) {
-		this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MainWindow::winClosing);
+		this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MainWindow::winClosing);//добавляем функция закрытия окна
+		//прячем элементы администратора
 		if (!this->admin) {
 			this->debugToolStripMenuItem->Enabled = false;
 			this->debugToolStripMenuItem->Visible = false;
 		}
+		//сохраняем изначальный размер для последующего его изменения
 		this->size = gcnew GenSize();
 		this->size->WinH = this->Height;
 		this->size->WinW = this->Width;
@@ -608,7 +622,9 @@ private: System::Windows::Forms::Label^ TL3;
 		this->size->PanelH = this->tabControl1->Height;
 		this->size->PanelWPoint = this->tabControl1->Location.X;
 		this->size->PanelListH = this->listBox1->Height;
-		menuBackgroundWhite(nullptr, nullptr);
+		
+		menuBackgroundWhite(nullptr, nullptr);//красим по умолчанию в белый фон
+		//красим и отключаем листбоксы
 		this->listBox1->ForeColor = System::Drawing::SystemColors::ScrollBar;
 		this->listBox2->ForeColor = System::Drawing::SystemColors::ScrollBar;
 		this->listBox3->ForeColor = System::Drawing::SystemColors::ScrollBar;
@@ -616,36 +632,39 @@ private: System::Windows::Forms::Label^ TL3;
 		this->listBox2->Enabled = false;
 		this->listBox3->Enabled = false;
 	}
+	//функция перед закрытием окна
 	private: System::Void winClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-			e->Cancel = !open();
+			e->Cancel = !open();//вызываем функцию для досрочного сохранения файла. Результат будет применен к остановке закрыти окна или нет.
 	}
-	private: bool clo = false;
+	private: bool clo = false;//параметр указывающий на закрытие окна или выход в меню регистрации
 	private: System::Void winClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
-		this->rf(this->clo);
+		this->rf(this->clo);//вызов делегата меню регистрации, который закроет окно как необходимо
 	}
+	//функция выхода из системы
 	private: System::Void menuLogout(System::Object^ sender, System::EventArgs^ e) {
 		this->clo = true;
 		this->Close();
 	}
 
-	private: bool textChangedEnable = true;
+	private: bool textChangedEnable = true;//параметр указывающий на работу функции изменения текста
 	private: System::Void textChanged(System::Object^ sender, System::EventArgs^ e) {
 		if (this->textChangedEnable) {
-			if (this->filecpp->Path == "New" && this->richTextBox1->Text == "") {
-				this->filecpp->Status = false;
-				this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
+			if (this->filecpp->Path == "New" && this->richTextBox1->Text == "") {//проверка на пустой новый файл
+				this->filecpp->Status = false;//устанавливаем статус
+				this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");//устанавливаем название файла
 			}
 			else {
-				this->filecpp->Status = true;
-				this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
+				this->filecpp->Status = true;//устанавливаем статус
+				this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");//устанавливаем название файла
 			}
-			if (this->colorOn) {
-				int buf = this->richTextBox1->SelectionStart;
-				this->richTextBox1->SelectAll();
-				this->richTextBox1->SelectionColor = System::Drawing::SystemColors::WindowText;
-				this->richTextBox1->Select(buf, 0);
-				this->colorOn = false;
+			if (this->colorOn) {//отключаем постоянный сброс цвета, что бы окно не мерцало
+				int buf = this->richTextBox1->SelectionStart;//сохраняем указатель в тексте
+				this->richTextBox1->SelectAll();//выделяем все
+				this->richTextBox1->SelectionColor = System::Drawing::SystemColors::WindowText;//красим
+				this->richTextBox1->Select(buf, 0);//восстанавливаем указатель
+				this->colorOn = false;//запрещаем сброс цвета
 			}
+			//красим и отключаем листбоксы
 			this->listBox1->ForeColor = System::Drawing::SystemColors::ScrollBar;
 			this->listBox2->ForeColor = System::Drawing::SystemColors::ScrollBar;
 			this->listBox3->ForeColor = System::Drawing::SystemColors::ScrollBar;
@@ -654,67 +673,73 @@ private: System::Windows::Forms::Label^ TL3;
 			this->listBox3->Enabled = false;
 		}
 	}
-
+	//функция сохранения
 	private: void save(bool as) {
-		if (as) {
-			this->saveFileDialog1->FileName = filecpp->Path;
+		if (as) {//спросить путь
+			this->saveFileDialog1->FileName = filecpp->Path;//устанавливаем заготовленный путь
 			if ((this->saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::Cancel)) {
-				return;
+				return;//отменяем если нет
 			}
-			this->filecpp->Path = this->saveFileDialog1->FileName;
+			this->filecpp->Path = this->saveFileDialog1->FileName;// получаем новый путь
 		}
-		if (this->filecpp->Path == "New") {
-			save(true);
+		if (this->filecpp->Path == "New") {//если файл новый
+			save(true);//спрашиваем путь в функции сохранения еще раз
 			return;
 		}
-		this->filecpp->Text = this->richTextBox1->Text;
-		this->filecpp->save();
-		this->filecpp->Status = false;
-		this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
+		this->filecpp->Text = this->richTextBox1->Text;//передаем содержимое текста в файл
+		this->filecpp->save();//сохраняем файл
+		this->filecpp->Status = false;//устанавливаем стату
+		this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");//устанавливаем название файла
 	}
+	//функция проверки открытия файла 
 	private: bool open() {
-		if (this->filecpp->Status) {
-			System::Windows::Forms::DialogResult^ dr;
-			dr = MessageBox::Show(this->TL2->Text, this->TL1->Text, MessageBoxButtons::YesNoCancel);
-			if (dr->Equals(System::Windows::Forms::DialogResult::Yes)) {
-				save(false);
-				return true;
+		if (this->filecpp->Status) {//проверяем если файл изменен
+			System::Windows::Forms::DialogResult^ dr;//Результат всплывающего окна
+			dr = MessageBox::Show(this->TL2->Text, this->TL1->Text, MessageBoxButtons::YesNoCancel);//вызываем окно
+			if (dr->Equals(System::Windows::Forms::DialogResult::Yes)) {//кнопка да
+				save(false);//сохраняем файл
+				return true;//посылаем продолжение операции
 			}
-			else if (dr->Equals(System::Windows::Forms::DialogResult::No)) {
-				return true;
+			else if (dr->Equals(System::Windows::Forms::DialogResult::No)) {//кнопка нет
+				return true;//посылаем продолжение операции
 			}
-			else if (dr->Equals(System::Windows::Forms::DialogResult::Cancel)) {
-				return false;
+			else if (dr->Equals(System::Windows::Forms::DialogResult::Cancel)) {//кнопка отмены
+				return false;//посылаем отмену операции
 			}
 		}
-		return true;
+		return true;//посылаем продолжение операции
 	}
-
+	//открытие файла
 	private: System::Void openFile(System::Object^ sender, System::EventArgs^ e) {
-		if (open()) {
-			if ((this->openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::Cancel)) {
-				return;
+		if (open()) {//сохраняем прошлый файл, если он не сохранен и проверяем продолжить ли действие
+			if ((this->openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::Cancel)) {//вызываем диалоговое окно с выбором файла
+				return;//отменяем если нет
 			}
-			this->filecpp = gcnew FileCPP(this->openFileDialog1->FileName);
-			this->richTextBox1->Text = this->filecpp->Text;
-			this->filecpp->Status = false;
-			this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
+			this->filecpp = gcnew FileCPP(this->openFileDialog1->FileName);//инициализируем новый файл
+			this->richTextBox1->Text = this->filecpp->Text;//передаем содержимое файла в текстбокс
+			this->filecpp->Status = false;//устанавливаем стату 
+			this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");//устанавливаем название файла
 		}
 	}
+	//функция нового файла
 	private: System::Void newFile(System::Object^ sender, System::EventArgs^ e) {
-		if (open()) {
-			this->richTextBox1->Text = "";
-			this->filecpp = gcnew FileCPP("New");
-			this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");
+		if (open()) {//сохраняем прошлый файл, если он не сохранен и проверяем продолжить ли действие
+			this->richTextBox1->Text = "";//обнуляем содержимое текстбокса
+			this->filecpp = gcnew FileCPP("New");//инициализируем новый файл
+			this->label1->Text = filecpp->Path + ((this->filecpp->Status) ? "*" : "");//устанавливаем название файла
 		}
 	}
+	//функция обработки нажатия кнопки "Сохранить файл как..."
 	private: System::Void saveFileAs(System::Object^ sender, System::EventArgs^ e) {
 		save(true);
 	}
+	//функция обработки нажатия кнопки "Сохранить как..."
 	private: System::Void saveFile(System::Object^ sender, System::EventArgs^ e) {
 		save(false);
 	}
+	//функция обработки нажатия кнопки "Белый"
 	private: System::Void menuBackgroundWhite(System::Object^ sender, System::EventArgs^ e) {
+		//инициализируем цвета под цветовую палитру
 		this->color1 = System::Drawing::Color::FromArgb(
 			static_cast<System::Int32>(static_cast<System::Byte>(255)), //r
 			static_cast<System::Int32>(static_cast<System::Byte>(255)), //g
@@ -733,7 +758,9 @@ private: System::Windows::Forms::Label^ TL3;
 			static_cast<System::Int32>(static_cast<System::Byte>(255)));//b
 		colorUpdate();
 	}
+		   //функция обработки нажатия кнопки "Розовый"
 	private: System::Void menuBackgroundPink(System::Object^ sender, System::EventArgs^ e) {
+		//инициализируем цвета под цветовую палитру
 		this->color1 = System::Drawing::Color::FromArgb(
 			static_cast<System::Int32>(static_cast<System::Byte>(255)), //r
 			static_cast<System::Int32>(static_cast<System::Byte>(192)), //g
@@ -752,7 +779,9 @@ private: System::Windows::Forms::Label^ TL3;
 			static_cast<System::Int32>(static_cast<System::Byte>(200)));//b
 		colorUpdate();
 	}
+	//функция обработки нажатия кнопки "Голубой"
 	private: System::Void menuBackgroundSkyblue(System::Object^ sender, System::EventArgs^ e) {
+		//инициализируем цвета под цветовую палитру
 		this->color1 = System::Drawing::Color::FromArgb(
 			static_cast<System::Int32>(static_cast<System::Byte>(192)), //r
 			static_cast<System::Int32>(static_cast<System::Byte>(192)), //g
@@ -771,6 +800,7 @@ private: System::Windows::Forms::Label^ TL3;
 			static_cast<System::Int32>(static_cast<System::Byte>(255)));//b
 		colorUpdate();
 	}
+	//функция обновления цветов приложения
 	private: System::Void colorUpdate() {
 		this->BackColor = this->color1;
 		this->richTextBox1->BackColor = this->color2;
@@ -783,10 +813,13 @@ private: System::Windows::Forms::Label^ TL3;
 		this->tabPage2->BackColor = this->color1;
 		this->tabPage3->BackColor = this->color1;
 	}
+	//функция отладки (Не используется)
 	private: System::Void debugSize(System::Object^ sender, System::EventArgs^ e) {
 		debug("off");
 	}
+	//функция обработки изменения размера окна
 	private: System::Void winResize(System::Object^ sender, System::EventArgs^ e) {
+		//изменяем размеры элементов
 		this->richTextBox1->Height = this->size->TextH - (this->size->WinH - this->Height);
 		this->richTextBox1->Width = this->size->TextW - (this->size->WinW - this->Width);
 		this->tabControl1->Height = this->size->PanelH - (this->size->WinH - this->Height);
@@ -796,6 +829,7 @@ private: System::Windows::Forms::Label^ TL3;
 		this->tabControl1->Location = Point(this->size->PanelWPoint - (this->size->WinW - this->Width), this->tabControl1->Location.Y);
 		// debug(this->tabControl1->TabPages[0]->Height.ToString() + " " + this->tabControl1->TabPages[0]->Width.ToString());
 	}
+	//функция отладки 
 	private: System::Void debugLocation(System::Object^ sender, System::EventArgs^ e) {
 		String^ buf = "Win:\t" + this->Height + "\n\t" + this->Width
 			+ "\nText:\t" + this->richTextBox1->Height + "\n\t" + this->richTextBox1->Width +
@@ -803,85 +837,92 @@ private: System::Windows::Forms::Label^ TL3;
 		MessageBox::Show(buf);
 
 	}
+	//функция выхода из приложения
 	private: System::Void menuExit(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
+	//функция смены шрифта
 	private: System::Void menuFont(System::Object^ sender, System::EventArgs^ e) {
-		this->textChangedEnable = false;
-		this->fontDialog1->Font = this->richTextBox1->Font;
-		this->fontDialog1->ShowDialog();
-		this->richTextBox1->Font = this->fontDialog1->Font;
-		this->textChangedEnable = true;
+		this->textChangedEnable = false;//отключаем функцию изменения текста
+		this->fontDialog1->Font = this->richTextBox1->Font;//устанавливаем шрифт по умолчанию
+		this->fontDialog1->ShowDialog();//вызываем диалоговое окно
+		this->richTextBox1->Font = this->fontDialog1->Font;//применяем новый шрифт
+		this->textChangedEnable = true;//включаем функцию изменения текста
 	}
-	private: System::Void setToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	//функция отладки 
+	private: System::Void debugResize(System::Object^ sender, System::EventArgs^ e) {
 		this->Width = 360;
 		this->Height = 480;
 	}
-	private: bool colorOn = false;
+	private: bool colorOn = false;//параметр сброса цвета
+	//функция анализа программного кода
 	private: System::Void menuAnalyzer(System::Object^ sender, System::EventArgs^ e) {
-		this->textChangedEnable = false;
-		int bufIndex = this->richTextBox1->SelectionStart;
-		this->funs = gcnew List<Ctring^>();
+		this->textChangedEnable = false;//отключаем функцию изменения текста
+		int bufIndex = this->richTextBox1->SelectionStart;//сохраняем положение курсора
+		this->funs = gcnew List<Ctring^>();//инициализируем список найденных функций
 
-		this->richTextBox1->SelectAll();
-		this->richTextBox1->SelectionColor = System::Drawing::SystemColors::WindowText;
+		this->richTextBox1->SelectAll();//выделяем весь текст
+		this->richTextBox1->SelectionColor = System::Drawing::SystemColors::WindowText;//сбрасываем цвет
+		//очищаем текстбоксы
 		this->listBox1->Items->Clear();
 		this->listBox2->Items->Clear();
 		this->listBox3->Items->Clear();
 
-		//=================       =================
+		//задаем регекс строку для поиска функций
 		Regex^ reg = gcnew Regex("[\\r\\n\\t :;]*((~?[_a-zA-Z][_0-9a-zA-Z]+)[\\r\\n\\t ]*\\([^)]*\\))[\\r\\n\\t ]*\\{[^}]*\\}");
+		//ищим функции
 		for each (Match ^ match in reg->Matches(this->richTextBox1->Text)) {
 			if (match->Groups[2]->Value != "each" &&
 				match->Groups[2]->Value != "while" &&
 				match->Groups[2]->Value != "catch" &&
 				match->Groups[2]->Value != "if" &&
-				match->Groups[2]->Value != "for") {
-				Ctring^ buf = gcnew Ctring();
-				buf->Text = match->Groups[1]->Value;
-				buf->Index = match->Groups[2]->Index;
-				this->funs->Add(buf);
+				match->Groups[2]->Value != "for") {//проверка на совпадения с ключевыми словами
+				Ctring^ buf = gcnew Ctring();//инициализируем новую функцию
+				buf->Text = match->Groups[1]->Value;//сохраняем название
+				buf->Index = match->Groups[2]->Index;//сохраняем указатель в тексте
+				this->funs->Add(buf);//добавляем в список
 
-				this->richTextBox1->Select(match->Groups[2]->Index, match->Groups[2]->Length);
-				this->richTextBox1->SelectionColor = System::Drawing::Color::FromArgb(
+				this->richTextBox1->Select(match->Groups[2]->Index, match->Groups[2]->Length);//выделяем название функции
+				this->richTextBox1->SelectionColor = System::Drawing::Color::FromArgb(//красим в красный цвет
 					static_cast<System::Int32>(static_cast<System::Byte>(255)), //r
 					static_cast<System::Int32>(static_cast<System::Byte>(0)), //g
 					static_cast<System::Int32>(static_cast<System::Byte>(0)));//b
 			}
 		}
-		this->funs->Sort();
-		for each (Ctring ^ a in this->funs) {
+		this->funs->Sort();//сортируем в алфавитном порядке
+		for each (Ctring ^ a in this->funs) {//проходимся по списку функций и заносим их в листбокс
 			this->listBox2->Items->Add(a->Text);
 		}
 
-		//=================          =================
+		//устанавливаем регекс строку для поиска переменных 
 		reg = gcnew Regex("\\b((int|char|long|bool|wchar_t|char16_t|char32_t|short|float|double|void)[\\r\\n\\t ]*[*|\\^]*[\\r\\n\\t ]+[_a-zA-Z][_0-9a-zA-Z]*)[\\r\\n\\t ]*=");
+		//ищим переменные
 		for each (Match ^ match in reg->Matches(this->richTextBox1->Text)) {
-			this->listBox3->Items->Add(match->Groups[1]->Value);
-			this->richTextBox1->Select(match->Groups[1]->Index, match->Groups[1]->Length);
-			this->richTextBox1->SelectionColor = System::Drawing::Color::FromArgb(
+			this->listBox3->Items->Add(match->Groups[1]->Value);//добавляем переменную в листбокс
+			this->richTextBox1->Select(match->Groups[1]->Index, match->Groups[1]->Length);//выделяем переменную
+			this->richTextBox1->SelectionColor = System::Drawing::Color::FromArgb(//красим в фиолетовый
 				static_cast<System::Int32>(static_cast<System::Byte>(255)), //r
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), //g
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));//b
 		}
-
-		//=================         =================
+		//получаем ключевые слова из заранее заготовленного списка
 		for each (String ^ keyWord in initKeyword()) {
-			reg = gcnew Regex("\\b" + keyWord + "\\b");
-			int buf = 0;
+			reg = gcnew Regex("\\b" + keyWord + "\\b");//корректируем регекс строку для поиска ключевых слов
+			int buf = 0;//считаем их количество
+			//ищим ключевые слова
 			for each (Match ^ match in reg->Matches(this->richTextBox1->Text)) {
-				this->richTextBox1->Select(match->Index, match->Length);
-				this->richTextBox1->SelectionColor = System::Drawing::Color::FromArgb(
+				this->richTextBox1->Select(match->Index, match->Length);//выделяем ключевы слова
+				this->richTextBox1->SelectionColor = System::Drawing::Color::FromArgb(//красим в синий цвет
 					static_cast<System::Int32>(static_cast<System::Byte>(0)), //r
 					static_cast<System::Int32>(static_cast<System::Byte>(0)), //g
 					static_cast<System::Int32>(static_cast<System::Byte>(255)));//b
-				buf++;
+				buf++;//увеличиваем указатель на один
 			}
-			if (buf != 0) {
+			if (buf > 0) {//добавляем ключевое слово в список, если мы его нашли больше нуля раз.
 				this->listBox1->Items->Add(keyWord + " \t\t" + buf.ToString());
 			}
 		}
-
+		//красим листбоксы и включаем их
 		this->listBox1->ForeColor = System::Drawing::SystemColors::WindowText;
 		this->listBox2->ForeColor = System::Drawing::SystemColors::WindowText;
 		this->listBox3->ForeColor = System::Drawing::SystemColors::WindowText;
@@ -889,22 +930,24 @@ private: System::Windows::Forms::Label^ TL3;
 		this->listBox2->Enabled = true;
 		this->listBox3->Enabled = true;
 
-		this->richTextBox1->Select(bufIndex,0);
-		this->colorOn = true;
-		this->textChangedEnable = true;
+		this->richTextBox1->Select(bufIndex,0);//восстанавливаем положение курсора
+		this->colorOn = true;//устанавливаем разрешение на сброс цвета
+		this->textChangedEnable = true;//включаем функцию изменения текста
 	}
+	//функция выбора функции в списке
 	private: System::Void pickList2(System::Object^ sender, System::EventArgs^ e) {
-		for each (Ctring ^ a in this->funs) {
-			if (this->listBox2->Items[this->listBox2->SelectedIndex]->ToString() == a->Text) {
-				this->richTextBox1->Focus();
-				this->richTextBox1->SelectionStart = a->Index;
+		for each (Ctring ^ a in this->funs) {//проходимся по функциям в списке
+			if (this->listBox2->Items[this->listBox2->SelectedIndex]->ToString() == a->Text) {//ищим наш выбранную функцию
+				this->richTextBox1->Focus();//устанавливаем фокус на текстбок
+				this->richTextBox1->SelectionStart = a->Index;//устанавливаем указатель на функцию
 			}
 		}
 	}
-
+	//функция обновления счетчика указателя в строке состояния
 	private: System::Void selectionChanged(System::Object^ sender, System::EventArgs^ e) {
 		this->toolStripStatusLabel2->Text = "|   " + this->richTextBox1->SelectionStart.ToString();
 	}
+	//функция вызова справки
 	private: System::Void help(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show(this->TL3->Text, "", MessageBoxButtons::OK, MessageBoxIcon::Information, MessageBoxDefaultButton::Button1);
 	}

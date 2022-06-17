@@ -4,26 +4,30 @@ namespace CACPP {
 	using namespace System::Collections::Generic;
 	using namespace System::Text::RegularExpressions;
 
+	//описываем класс и наследуем от класса IComparable для реализации сортировки
 	ref class Ctring : IComparable {
 	private:
-		String^ str;
-		int index;
+		String^ str;//название
+		int index;//индекс указателя
 	public:
+		//определяем функцию сравнения
 		int virtual CompareTo(Object^ obj) {
-			String^ str1 = ((Ctring^)obj)->Text;
-			return String::Compare(this->str, str1);
+			String^ str1 = ((Ctring^)obj)->Text;//Приводим тип к нашему классу для сравнения
+			return String::Compare(this->str, str1);//сравниваем строки по алфавитному порядку
 		}
+		//свойства названия
 		property String^ Text {
-			String^ get() { return this->str; }
-			void set(String^ value) { this->str = value; }
+			String^ get() { return this->str; }//вернуть строку
+			void set(String^ value) { this->str = value; }//установить строку
 		}
+		//свойство индекса указателя
 		property int Index {
-			int get() { return this->index; }
-			void set(int value) { this->index = value; }
+			int get() { return this->index; }//вернуть индекс
+			void set(int value) { this->index = value; }//установить индекс
 		}
 	};
 
-	List<String^>^ initKeyword() {
+	List<String^>^ initKeyword() {//инициализируем список с ключевыми словами языка программирования С++
 		List<String^>^ buf = gcnew List<String^>();
 		buf->Add("alignas");
 		buf->Add("alignof");

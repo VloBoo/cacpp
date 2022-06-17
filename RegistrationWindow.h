@@ -344,91 +344,98 @@ namespace CACPP {
 		}
 #pragma endregion
 
+	//функция делегат отвечающая за закрытие окна
 	public: void show(bool logout) {
-		logout ? this->Show() : this->Close();
+		logout ? this->Show() : this->Close();// в зависимости от параметра показывает или закрывает окно
 	}
+	//функция делегат устанавливающая локализацию
 	public: void local(int l) {
-		this->comboBox1->SelectedIndex = l;
-		this->selected(nullptr, nullptr);
+		this->comboBox1->SelectedIndex = l;//устанавливает правильную строку в выпадающем списке
+		this->selected(nullptr, nullptr);//меняет локализацию
 	}
+	//функция обрабокт нажатия кнопки "Подтвердить" во вкладке "Вход".
 	private: System::Void button1Click(System::Object^ sender, System::EventArgs^ e) {
 		if ((this->textBox1->Text->Length <= MAX_SIZE_REG && this->textBox1->Text->Length > 3) ||
-			(this->textBox2->Text->Length <= MAX_SIZE_REG && this->textBox2->Text->Length > 3)) {
-			Registration^ r = gcnew Registration();
-			bool admin = false;
+			(this->textBox2->Text->Length <= MAX_SIZE_REG && this->textBox2->Text->Length > 3)) {//проверка длины логина и пароля 
+			Registration^ r = gcnew Registration();//создания класса регистрации
+			bool admin = false;//преждевременная установка флага администратора.
 
-			if (r->login(this->textBox2->Text, this->textBox1->Text, 1, this->checkBox1->Checked)) {
-				admin = true;
+			if (r->login(this->textBox2->Text, this->textBox1->Text, 1, this->checkBox1->Checked)) {//попытка входа от имени администратора
+				admin = true;//устанавливаем флаг в случаи успеха
 			}
 			else {
-				if (!r->login(this->textBox2->Text, this->textBox1->Text, 0, this->checkBox1->Checked)) {
-					MessageBox::Show(this->TL1->Text);
+				if (!r->login(this->textBox2->Text, this->textBox1->Text, 0, this->checkBox1->Checked)) {//попытка входа от имени пользователя
+					MessageBox::Show(this->TL1->Text);//вывод сообщении об провале
 					return;
 				}
 			}
-			r->save();
-			this->Hide();
-			MainWindow^ mainWindow = gcnew MainWindow(admin,
-				gcnew ReturnFun(this, &RegistrationWindow::show),
-				gcnew LocalFun(this, &RegistrationWindow::local));
-			mainWindow->Show();
+			r->save();//сохраняем состояния входа
+			this->Hide();//прячем текущую форму
+			MainWindow^ mainWindow = gcnew MainWindow(admin,//создаем основное окно с передачей параметров
+				gcnew ReturnFun(this, &RegistrationWindow::show),//передаем делегат открытия окна
+				gcnew LocalFun(this, &RegistrationWindow::local));//передаем делегат локали
+			mainWindow->Show();//отображаем основное окно
 		}
 		
 		else {
-			MessageBox::Show(this->TL2->Text);
+			MessageBox::Show(this->TL2->Text);//выводим сообщение об провале
 		}
 	}
+	//функция обрабокт нажатия кнопки "Подтвердить" во вкладке "Регистрация".
 	private: System::Void button2Click(System::Object^ sender, System::EventArgs^ e) {
-		bool regok = false;
+		bool regok = false;//флаг успешной регистрации
 		if ((this->textBox3->Text->Length <= 20 && this->textBox3->Text->Length > 3) ||
 			(this->textBox4->Text->Length <= 20 && this->textBox4->Text->Length > 3) ||
-			(this->textBox5->Text->Length <= 20 && this->textBox5->Text->Length > 3)) {
-			Registration^ r = gcnew Registration();
-			if (this->textBox5->Text == "    ") {
-				if (r->addUser(this->textBox3->Text, this->textBox4->Text, 1)) {
-					MessageBox::Show(this->TL3->Text);
-					regok = true;
+			(this->textBox5->Text->Length <= 20 && this->textBox5->Text->Length > 3)) {//проверка длины логина и пароля 
+			Registration^ r = gcnew Registration();//создания класса регистрации
+			if (this->textBox5->Text == "    ") {//проверка на регистрация администратора
+				if (r->addUser(this->textBox3->Text, this->textBox4->Text, 1)) {//регистрируем администратора
+					MessageBox::Show(this->TL3->Text);//выводим сообщение об успехе
+					regok = true;//устанавливаем флаг успешной регистрации
 				}
 				else {
-					MessageBox::Show(this->TL4->Text);
+					MessageBox::Show(this->TL4->Text);//выводим сообщение об провале
 				}
 			}
 			else {
-				if (this->textBox4->Text == this->textBox5->Text) {
-					if (r->addUser(this->textBox3->Text, this->textBox4->Text, 0)) {
-						MessageBox::Show(this->TL3->Text);
-						regok = true;
+				if (this->textBox4->Text == this->textBox5->Text) {//сравниваем пароль и подтверждение пароля
+					if (r->addUser(this->textBox3->Text, this->textBox4->Text, 0)) {//регистрируем пользователя
+						MessageBox::Show(this->TL3->Text);//выводим сообщение об успехе
+						regok = true;//устанавливаем флаг успешной регистрации
 					}
 					else {
-						MessageBox::Show(this->TL4->Text);
+						MessageBox::Show(this->TL4->Text);//выводим сообщение об провале
 					}
 				}
 				else {
-					MessageBox::Show(this->TL5->Text);
+					MessageBox::Show(this->TL5->Text);//выводим сообщение об провале
 				}
 			}
-			r->save();
+			r->save();//сохраняем состояния входа
 		}
 		else {
-			MessageBox::Show(this->TL1->Text);
+			MessageBox::Show(this->TL1->Text);//выводим сообщение об провале
 		}
-		if (regok) {
+		if (regok) {//если регистрация успешка, то очишаем содержимое текстбоксов и переходим на вкладку "Вход"
 			this->textBox3->Text = "";
 			this->textBox4->Text = "";
 			this->textBox5->Text = "";
 			this->tabControl1->SelectTab(0);
 		}
 	}
+	//функция загрузки окна
 	private: System::Void regwinLoad(System::Object^ sender, System::EventArgs^ e) {
-		this->helpProvider1->SetShowHelp(this,true);
-		Registration^ r = gcnew Registration();
-		if (r->isLogin()) {
+		this->helpProvider1->SetShowHelp(this,true);//устанавливаем справку
+		Registration^ r = gcnew Registration();//создания класса регистрации
+		if (r->isLogin()) {//если есть пользователь в системе, то подставляем его логин и пароль.
 			this->textBox2->Text = r->getLogin();
 			this->textBox1->Text = r->getPassword();
 			this->checkBox1->Checked = true;
 		}
 	}
+	//функция смены локализации
 	private: System::Void selected(System::Object^ sender, System::EventArgs^ e) {
+		//меняем локализацию в соответствии с выбранным элементом.
 		switch (this->comboBox1->SelectedIndex)
 		{
 		case 0: {
@@ -444,6 +451,7 @@ namespace CACPP {
 			break;
 		}
 		}
+		//сохраняем значения, ведь при очисти они пропадут
 		String^ byf = this->textBox1->Text;
 		String^ byf2 = this->textBox2->Text;
 		String^ byf3 = this->textBox3->Text;
@@ -451,8 +459,8 @@ namespace CACPP {
 		String^ byf5 = this->textBox5->Text;
 		bool byf6 = this->checkBox1->Checked;
 		int buf7 = this->tabControl1->SelectedIndex;
-		this->Controls->Clear();
-		InitializeComponent();
+		this->Controls->Clear(); //очищаем элементы
+		InitializeComponent();//заново инициализируем элементы с нужной локализацией
 		this->textBox1->Text = byf;
 		this->textBox2->Text = byf2;
 		this->textBox3->Text = byf3;
@@ -460,7 +468,6 @@ namespace CACPP {
 		this->textBox5->Text = byf5;
 		this->checkBox1->Checked = byf6;
 		this->tabControl1->SelectedIndex = buf7;
-		
 	}
 	};
 }

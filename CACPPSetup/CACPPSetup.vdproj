@@ -21,12 +21,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_271DA3CD1148497A8CE00D5FDDF54189"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_3790355642D74718BE912D0FD77FD1E5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -40,6 +34,12 @@
         "Entry"
         {
         "MsmKey" = "8:_AC680605607C4ADD889471656FADB23A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EA917633AC2046AE874A920D503A5C45"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -74,6 +74,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -98,6 +106,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -134,37 +150,6 @@
             "TargetName" = "8:help.chm"
             "Tag" = "8:"
             "Folder" = "8:_D83E0DA11DF34DC587581508EE09FFF1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_271DA3CD1148497A8CE00D5FDDF54189"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CACPP.resources, Version=0.0.0.0, Culture=en, processorArchitecture=AMD64"
-                "ScatterAssemblies"
-                {
-                    "_271DA3CD1148497A8CE00D5FDDF54189"
-                    {
-                    "Name" = "8:CACPP.resources.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\x64\\Release\\en\\CACPP.resources.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_440AB0876877408BAD6DECE840ED0377"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -272,6 +257,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EA917633AC2046AE874A920D503A5C45"
+            {
+            "SourcePath" = "8:..\\favicon.ico"
+            "TargetName" = "8:favicon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_D83E0DA11DF34DC587581508EE09FFF1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -299,17 +304,6 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_440AB0876877408BAD6DECE840ED0377"
-                    {
-                    "Name" = "8:en"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_775EEE2C4A2E47B397E2DFA7FAE220D1"
-                        "Folders"
-                        {
-                        }
-                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_91CE9347685240ADB15BCAD499AF67FF"
                     {
                     "Name" = "8:be"
@@ -361,15 +355,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CACPP"
-        "ProductCode" = "8:{6E8CA832-CC87-444E-9335-4D7FE4E3C99E}"
-        "PackageCode" = "8:{CE460CDD-E871-477C-A4BA-D2B13C20522F}"
+        "ProductCode" = "8:{DC4E807D-045C-4032-8E23-C067D0900AC5}"
+        "PackageCode" = "8:{839D285E-BFEE-41D7-8F35-1B02B3636EE4}"
         "UpgradeCode" = "8:{2DD965D7-A0CC-4ED3-92ED-42DFFF3B6E81}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.2"
+        "ProductVersion" = "8:1.2.0"
         "Manufacturer" = "8:KBP"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -379,7 +373,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:https://kbp.by/"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_EA917633AC2046AE874A920D503A5C45"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -482,6 +476,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D8657EA19B41470582D4238FE3B406D1"
+            {
+            "Name" = "8:CACPP.exe"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_8114E140BF3045969AA8C93A05276831"
+            "Folder" = "8:_82EE5D08983540C2A30B00C58487A4ED"
+            "WorkingFolder" = "8:_D83E0DA11DF34DC587581508EE09FFF1"
+            "Icon" = "8:_EA917633AC2046AE874A920D503A5C45"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
